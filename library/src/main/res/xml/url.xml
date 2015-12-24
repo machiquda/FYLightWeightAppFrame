@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<url>
+    <Node
+        Key ="login"
+        Expires="300"
+        NetType="get"
+        MockClass = ""
+        Url = "/user/login.do"/>
+
+    <Node
+        Key ="minepro"
+        Expires="300"
+        NetType="post"
+        MockClass = ""
+        Url = "/user/employee/mine_pro.do"/>
+</url>

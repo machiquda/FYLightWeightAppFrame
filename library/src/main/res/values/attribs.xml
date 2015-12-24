@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2013 Sebastiano Poggi and Francesco Pontillo
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+<resources>
+
+
+    <declare-styleable name="StretchPanelExtendFramLayout">
+        <attr name="contentView" format="reference" />
+        <attr name="stretchView" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="CircularProgressViewSrc">
+        <attr name="cpv_progress" format="float" />
+        <attr name="cpv_maxProgress" format="float" />
+        <attr name="cpv_animDuration" format="integer" />
+        <attr name="cpv_color" format="color" />
+        <attr name="cpv_thickness" format="dimension" />
+        <attr name="cpv_indeterminate" format="boolean" />
+        <attr name="cpv_animAutostart" format="boolean" />
+        <attr name="cpv_animSteps" format="integer" />
+    </declare-styleable>
+
+    <color name="cpv_default_color">#e54f7d</color>
+
+    <dimen name="cpv_default_thickness">4dp</dimen>
+
+    <integer name="cpv_default_progress">0</integer>
+    <integer name="cpv_default_max_progress">100</integer>
+
+    <bool name="cpv_default_is_indeterminate">false</bool>
+    <bool name="cpv_default_anim_autostart">false</bool>
+
+    <integer name="cpv_default_anim_duration">4000</integer>
+    <integer name="cpv_default_anim_steps">3</integer>
+
+    <declare-styleable name="RotateLoading">
+        <attr name="loading_width" format="dimension" />
+        <attr name="loading_color" format="color" />
+        <attr name="shadow_position" format="integer" />
+    </declare-styleable>
+
+</resources>

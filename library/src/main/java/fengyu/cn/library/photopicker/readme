@@ -1,0 +1,12 @@
+/** fengyu 2015-12-05**/
+photopicker 包的作用是提供了一个类似微信的照片选择界面，
+可以多选，和单选，浏览，切换相册。
+使用时可以直接通过：
+   PhotoPickerIntent intent = new PhotoPickerIntent(Activity);
+   intent.setPhotoCount(count);
+   intent.setShowCamera(true);
+   startActivityForResult(intent, requestCode);
+会把选择的照片在手机中的存储位置返回。
+Photo_X_View
+一个类似九宫格展示图片的的自定义UI控件
+
