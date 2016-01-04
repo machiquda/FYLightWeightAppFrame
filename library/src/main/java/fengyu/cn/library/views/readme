@@ -1,6 +1,0 @@
-/** fengyu 2015-12-05**/
-views 这个包的作用是一些自定义的UI控件
-CircularProgressView  类似Android原生的PogressBar效果
-FUtimateListView FysXListView 的扩展版 自带状态指示器 将FysXListView的繁琐状态改变封装到了内部
-FysXListView  基于ListView 实现了下拉刷新  和上拉加载更多
-InitViewController  状态指示器

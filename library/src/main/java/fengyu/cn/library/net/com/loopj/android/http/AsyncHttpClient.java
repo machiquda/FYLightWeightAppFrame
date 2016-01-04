@@ -37,6 +37,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.zip.GZIPInputStream;
 
+
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HeaderElement;
 import cz.msebera.android.httpclient.HttpEntity;
@@ -110,9 +111,7 @@ import cz.msebera.android.httpclient.protocol.SyncBasicHttpContext;
  * });
  * </pre>
  *
- * @see com.loopj.android.http.AsyncHttpResponseHandler
- * @see com.loopj.android.http.ResponseHandlerInterface
- * @see com.loopj.android.http.RequestParams
+
  */
 public class AsyncHttpClient {
 
@@ -628,7 +627,6 @@ public class AsyncHttpClient {
      * your needs
      *
      * @param customRedirectHandler RedirectHandler instance
-     * @see com.loopj.android.http.MyRedirectHandler
      */
     public void setRedirectHandler(final RedirectHandler customRedirectHandler) {
         httpClient.setRedirectHandler(customRedirectHandler);

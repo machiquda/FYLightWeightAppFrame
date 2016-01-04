@@ -1,8 +1,0 @@
-KLog 使用时在libarary中加入编译
-   KLog.d() default tag is current class name
-   KLog.d(String) default tag is current class name
-   KLog.d(Tag,String)
-   KLog.json(String)
-   KLog.json(Tag,String)
-   KLog.file() KLog.file(TAG, Environment.getExternalStorageDirectory(), "test.txt", JSON_LONG);
-   KLog.xml()  KLog.xml(XML);

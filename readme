@@ -1,0 +1,26 @@
+/** fengyu 2015-12-05**/
+photopicker 包的作用是提供了一个类似微信的照片选择界面，
+可以多选，和单选，浏览，切换相册。
+使用时可以直接通过：
+   PhotoPickerIntent intent = new PhotoPickerIntent(Activity);
+   intent.setPhotoCount(count);
+   intent.setShowCamera(true);
+   startActivityForResult(intent, requestCode);
+会把选择的照片在手机中的存储位置返回。
+Photo_X_View
+一个类似九宫格展示图片的的自定义UI控件
+
+KLog 使用时在libarary中加入编译
+   KLog.d() default tag is current class name
+   KLog.d(String) default tag is current class name
+   KLog.d(Tag,String)
+   KLog.json(String)
+   KLog.json(Tag,String)
+   KLog.file() KLog.file(TAG, Environment.getExternalStorageDirectory(), "test.txt", JSON_LONG);
+   KLog.xml()  KLog.xml(XML);
+
+views 这个包的作用是一些自定义的UI控件
+CircularProgressView  类似Android原生的PogressBar效果
+FUtimateListView FysXListView 的扩展版 自带状态指示器 将FysXListView的繁琐状态改变封装到了内部
+FysXListView  基于ListView 实现了下拉刷新  和上拉加载更多
+InitViewController  状态指示
