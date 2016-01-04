@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\sample\build\intermediates\exploded-aar\FYLightWeightAppFrame\library\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="80eb6cdfb1c8a27dc4f6f7b2e763c67c26778b5e">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\sample\build\intermediates\pre-dexed\debug\FYLightWeightAppFrame-library-unspecified_4bd6ed99be204fd86e69d4b38e42f8d0aba42b94.jar" />
+    </item>
+
+</items>

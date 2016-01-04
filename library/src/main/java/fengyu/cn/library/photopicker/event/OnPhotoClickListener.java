@@ -11,6 +11,9 @@ package fengyu.cn.library.photopicker.event;
 import android.view.View;
 
 
+/**
+ * Created by fys on 2015/9/6.
+ */
 
 public interface OnPhotoClickListener {
 

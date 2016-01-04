@@ -31,7 +31,6 @@ public class PopupDirectoryListAdapter extends BaseAdapter {
   public PopupDirectoryListAdapter(Context context, List<PhotoDirectory> directories) {
     this.context = context;
     this.directories = directories;
-
     mLayoutInflater = LayoutInflater.from(context);
   }
 

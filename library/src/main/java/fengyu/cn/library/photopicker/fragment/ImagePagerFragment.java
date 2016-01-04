@@ -29,7 +29,8 @@ import fengyu.cn.library.photopicker.adapter.PhotoPagerAdapter;
 
 
 /**
- * Created by donglua on 15/6/21.
+ * Created by fys on 15/6/21.
+ * 图片预览fragment
  */
 public class ImagePagerFragment extends Fragment {
 

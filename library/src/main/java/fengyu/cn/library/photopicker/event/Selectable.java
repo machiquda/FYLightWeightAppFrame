@@ -6,6 +6,9 @@ import fengyu.cn.library.photopicker.entity.Photo;
 
 
 
+/**
+ * Created by fys on 2015/9/6.
+ */
 
 public interface Selectable {
 

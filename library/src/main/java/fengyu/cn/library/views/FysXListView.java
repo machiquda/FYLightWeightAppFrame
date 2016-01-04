@@ -21,7 +21,6 @@ import fengyu.cn.library.R;
 
 /**
  * @file FXListView.java
- * @package me.maxwin.view
  * @create Mar 18, 2015 6:28:41 PM
  * @author fenyu
  * @description An ListView support (a) Pull down to refresh, (b) Pull up to load more.
@@ -238,10 +237,14 @@ public class FysXListView extends ListView implements OnScrollListener {
 		// is refreshing, just scroll back to show all the header.
 		if (mPullRefreshing && height > mHeaderViewHeight) {
 			finalHeight = mHeaderViewHeight;
+			//设置刷新时Header的高度
+			mScroller.startScroll(0, height, 0, 200,
+					SCROLL_DURATION);
+		}else{
+				mScroller.startScroll(0, height, 0, finalHeight - height,
+				SCROLL_DURATION);
 		}
 		mScrollBack = SCROLLBACK_HEADER;
-		mScroller.startScroll(0, height, 0, finalHeight - height,
-				SCROLL_DURATION);
 		// trigger computeScroll
 		invalidate();
 	}

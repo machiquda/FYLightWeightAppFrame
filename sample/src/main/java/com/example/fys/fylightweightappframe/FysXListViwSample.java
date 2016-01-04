@@ -3,6 +3,7 @@ package com.example.fys.fylightweightappframe;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import fengyu.cn.library.views.FysXListView;
 /**
  * Created by fys on 2015/12/23.
  */
-public class FysXListViwSample extends Activity {
+public class FysXListViwSample extends AppCompatActivity {
 
 
     FUtimateListView<String> listView;

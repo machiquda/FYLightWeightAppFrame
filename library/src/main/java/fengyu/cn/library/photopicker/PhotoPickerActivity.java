@@ -33,13 +33,13 @@ public class PhotoPickerActivity extends AppCompatActivity {
     private MenuItem menuDoneItem;
 
     public final static int DEFAULT_MAX_COUNT = 9;
-
+    private int currentMode = -1;
     private int maxCount = DEFAULT_MAX_COUNT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        currentMode = getIntent().getIntExtra("storageMode", 1);
         setContentView(R.layout.activity_photo_picker);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -53,13 +53,15 @@ public class PhotoPickerActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             actionBar.setElevation(25);
         }
-
         maxCount = getIntent().getIntExtra(EXTRA_MAX_COUNT, DEFAULT_MAX_COUNT);
         boolean showCamera = getIntent().getBooleanExtra(EXTRA_SHOW_CAMERA, true);
-
         pickerFragment =
                 (PhotoPickerFragment) getSupportFragmentManager().findFragmentById(R.id.photoPickerFragment);
 
+        if (getIntent().getStringArrayListExtra("photoPaths") != null) {
+            pickerFragment.getPhotoGridAdapter().setPreviousSelectedPhotoPath(getIntent().getStringArrayListExtra("photoPaths"));
+        }
+        pickerFragment.setPhotoPickMode(currentMode);
         pickerFragment.getPhotoGridAdapter().setShowCamera(showCamera);
 
         pickerFragment.getPhotoGridAdapter().setOnItemCheckListener(new OnItemCheckListener() {
@@ -152,4 +154,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
     public PhotoPickerActivity getActivity() {
         return this;
     }
+
+
 }
