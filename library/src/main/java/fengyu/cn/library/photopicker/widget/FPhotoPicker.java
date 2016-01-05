@@ -53,7 +53,7 @@ public class FPhotoPicker extends LinearLayout implements OnStartDragListener {
     }
 
     /**
-     * 设置选择图片的个数
+     *设置选择图片的个数
      * @param size
      */
     public void setPhotoPickSize(int size) {
@@ -63,7 +63,7 @@ public class FPhotoPicker extends LinearLayout implements OnStartDragListener {
     }
 
     /**
-     * 设置FPhotoPicker 展示列数
+     *设置FPhotoPicker 展示列数
      *
      * @param columns
      */

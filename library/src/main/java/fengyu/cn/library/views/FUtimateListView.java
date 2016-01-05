@@ -14,19 +14,19 @@ import fengyu.cn.library.R;
 
 
 /**
- * Created by fys on 2015/7/17. FysXListView æ‰©å±•ç‰ˆ å†…ç½®äº†listview æ•°æ®å„ç§çŠ¶æ€çš„æç¤ºï¼›
+ * Created by fys on 2015/7/17. FysXListView À©Õ¹°æ ÄÚÖÃÁËlistview Êı¾İ¸÷ÖÖ×´Ì¬µÄÌáÊ¾£»
  */
 public class FUtimateListView<T> extends FrameLayout {
 
-    // å†…ç½®FysXListView
+    // ÄÚÖÃFysXListView
     private FysXListView inSideListView;
-    // çŠ¶æ€æŒ‡ç¤ºå™¨
+    // ×´Ì¬Ö¸Ê¾Æ÷
     private InitViewController statusiIdicatorView;
-    // è·Ÿå¸ƒå±€View
+    // ¸ú²¼¾ÖView
     private View rootView;
     private BaseAdapter adapter;
     private static final int LoadMoreSize = 15;
-    // æ•°æ®æº
+    // Êı¾İÔ´
     private List<T> data;
 
     public FUtimateListView(Context context, AttributeSet attrs) {
@@ -43,7 +43,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * ä¸ºå†…éƒ¨æŒæœ‰çš„ListView set adapter å¹¶æ”¹å˜ æŒ‡ç¤ºå™¨çŠ¶æ€
+     * ÎªÄÚ²¿³ÖÓĞµÄListView set adapter ²¢¸Ä±ä Ö¸Ê¾Æ÷×´Ì¬
      *
      * @param adapter
      */
@@ -52,7 +52,7 @@ public class FUtimateListView<T> extends FrameLayout {
         if (adapter != null) {
             if (adapter.getCount() == 0) {
                 statusiIdicatorView.setState(InitViewController.NODATA);
-                // éšè—Footer
+                // Òş²ØFooter
                 inSideListView.setHideFooter();
             } else if (adapter.getCount() > 0) {
                 if (adapter.getCount() < 8)
@@ -65,7 +65,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * ä¸Šæ‹‰åŠ è½½ NotifyDataSetChanged å¯¹åŠ å…¥çš„æ•°æ® tempData æ ¹æ®å¤§å°å¯¹åˆ¤æ–­listviewèƒ½å¦å¯ä»¥ç»§ç»­åŠ è½½æ›´å¤š
+     * ÉÏÀ­¼ÓÔØ NotifyDataSetChanged ¶Ô¼ÓÈëµÄÊı¾İ tempData ¸ù¾İ´óĞ¡¶ÔÅĞ¶ÏlistviewÄÜ·ñ¿ÉÒÔ¼ÌĞø¼ÓÔØ¸ü¶à
      *
      * @param tempData
      */
@@ -91,7 +91,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * ä¸‹æ‹‰åˆ·æ–° NotifyDataSetChanged
+     * ÏÂÀ­Ë¢ĞÂ NotifyDataSetChanged
      *
      * @param data
      */
@@ -114,7 +114,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * è·å–æ•°æ®æº
+     * »ñÈ¡Êı¾İÔ´
      *
      * @return data;
      */
@@ -123,7 +123,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * è®¾ç½®æ•°æ®æº
+     * ÉèÖÃÊı¾İÔ´
      *
      * @param data
      */
@@ -132,7 +132,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * è·å–å†…éƒ¨æŒæœ‰çš„FysXListView
+     * »ñÈ¡ÄÚ²¿³ÖÓĞµÄFysXListView
      *
      * @return
      */
@@ -141,12 +141,12 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * å¼ºåˆ¶æ›´æ–°æŒ‡ç¤ºå™¨çŠ¶æ€
-     * statusï¼š
-     * InitViewController.OK        æ•°æ®åŠ åœ¨å®Œæˆ
-     * InitViewController.NODATA    æ²¡æœ‰æ•°æ®
-     * InitViewController.NETERROR  ç½‘ç»œé”™è¯¯
-     * InitViewController.LOADING   åŠ åœ¨ä¸­
+     * Ç¿ÖÆ¸üĞÂÖ¸Ê¾Æ÷×´Ì¬
+     * status£º
+     * InitViewController.OK        Êı¾İ¼ÓÔÚÍê³É
+     * InitViewController.NODATA    Ã»ÓĞÊı¾İ
+     * InitViewController.NETERROR  ÍøÂç´íÎó
+     * InitViewController.LOADING   ¼ÓÔÚÖĞ
      *
      * @param status
      */
@@ -176,7 +176,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * è®¾ç½®èƒ½å¦ä¸Šæ‹‰åŠ è½½æ›´å¤š
+     * ÉèÖÃÄÜ·ñÉÏÀ­¼ÓÔØ¸ü¶à
      *
      * @param isEnable
      */
@@ -185,7 +185,7 @@ public class FUtimateListView<T> extends FrameLayout {
     }
 
     /**
-     * è®¾ç½®èƒ½å¦ä¸‹æ‹‰åˆ·æ–°
+     * ÉèÖÃÄÜ·ñÏÂÀ­Ë¢ĞÂ
      *
      * @param isEnable
      */

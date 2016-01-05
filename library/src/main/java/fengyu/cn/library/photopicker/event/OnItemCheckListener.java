@@ -11,10 +11,10 @@ public interface OnItemCheckListener {
 
   /***
    *
-   * @param position æ‰€é€‰å›¾ç‰‡çš„ä½ç½®
-   * @param path     æ‰€é€‰çš„å›¾ç‰‡
-   *@param isCheck   å½“å‰çŠ¶æ€
-   * @param selectedItemCount  å·²é€‰æ•°é‡
+   * @param position ËùÑ¡Í¼Æ¬µÄÎ»ÖÃ
+   * @param path     ËùÑ¡µÄÍ¼Æ¬
+   *@param isCheck   µ±Ç°×´Ì¬
+   * @param selectedItemCount  ÒÑÑ¡ÊıÁ¿
    * @return enable check
    */
   boolean OnItemCheck(int position, Photo path, boolean isCheck, int selectedItemCount);

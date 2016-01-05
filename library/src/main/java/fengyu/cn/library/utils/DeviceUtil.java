@@ -12,9 +12,9 @@ import android.telephony.gsm.GsmCellLocation;
 import android.text.TextUtils;
 
 /**
- * æ‰‹æœºå¹³å°ï¼ˆå¦‚Symbianã€Androidã€iPhoneï¿½?è½¯ä»¶ç‰ˆæœ¬ï¿½?æ‰‹æœºIMEI æ‰‹æœºIMSI æ‰‹æœºäº§å“IDï¼ˆæ‰‹æœºå‹å·ï¼‰
- * å›½å®¶IDï¼ˆmccä¸­å›½ï¿½?60ï¿½?è¿è¥å•†IDï¼ˆMNCä¸­å›½ç§»åŠ¨ï¿½?0,02 (GSM),07 (TD)ï¼Œè”é€šæ˜¯01ï¿½?
- * åœ°åŒºIDï¼ˆä½ç½®åŒºåŸŸç ï¼Œå®ƒæ˜¯å”¯ä¸€åœ°è¯†åˆ«æˆ‘å›½æ•°å­—PLMNä¸­æ¯ä¸ªä½ç½®åŒºçš„ï¼Œæ˜¯ä¸€ï¿½?å­—èŠ‚16è¿›åˆ¶çš„BCDç ï¼‰ å½“å‰åŸºç«™ID
+ * ÊÖ»úÆ½Ì¨£¨ÈçSymbian¡¢Android¡¢iPhoneÈí¼ş°æ±¾ÊÖ»úIMEI ÊÖ»úIMSI ÊÖ»ú²úÆ·ID£¨ÊÖ»úĞÍºÅ£©
+ * ¹ú¼ÒID£¨mccÖĞ¹ú60ÔËÓªÉÌID£¨MNCÖĞ¹úÒÆ¶¯0,02 (GSM),07 (TD)£¬ÁªÍ¨ÊÇ01
+ * µØÇøID£¨Î»ÖÃÇøÓòÂë£¬ËüÊÇÎ¨Ò»µØÊ¶±ğÎÒ¹úÊı×ÖPLMNÖĞÃ¿¸öÎ»ÖÃÇøµÄ£¬ÊÇÒ»×Ö½Ú16½øÖÆµÄBCDÂë£© µ±Ç°»ùÕ¾ID
  * 
  */
 
@@ -33,7 +33,7 @@ public class DeviceUtil {
 		String nativePhoneNumber = null;
 		nativePhoneNumber = telephonyManager.getLine1Number();
 		if (nativePhoneNumber != null) {
-			// //æŒ‰å›½å†…æ‰‹æœºå·ç é•¿åº¦æˆªå–+86,å‰©ä¸‹11ä½
+			// //°´¹úÄÚÊÖ»úºÅÂë³¤¶È½ØÈ¡+86,Ê£ÏÂ11Î»
 			if (nativePhoneNumber.length() > 11)
 				nativePhoneNumber = nativePhoneNumber.substring(3);
 		}
@@ -113,7 +113,7 @@ public class DeviceUtil {
 		return mWifiManager.getConnectionInfo().getBSSID();
 	}
 
-	public static String getVersion(Context context)// è·å–ç‰ˆæœ¬å·
+	public static String getVersion(Context context)// »ñÈ¡°æ±¾ºÅ
 	{
 		try {
 			PackageInfo pi = context.getPackageManager().getPackageInfo(

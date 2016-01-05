@@ -19,7 +19,7 @@ import fengyu.cn.library.utils.DeviceUtil;
 
 /**
  * Created by fys on 2015/11/26.
- * æ•°æ®è¯·æ±‚å…¥å£
+ * Êı¾İÇëÇóÈë¿Ú
  */
 public class FAppHttpClient {
 
@@ -27,21 +27,21 @@ public class FAppHttpClient {
     private static AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
     /**
      * PersistentCookieStore cookie
-     * æ·»åŠ  cookie see@ AsyncHttpClient.addCookie
+     * Ìí¼Ó cookie see@ AsyncHttpClient.addCookie
      */
     private static PersistentCookieStore cookieStore;
     private static String newUrl = null;
     public static Context mApplicationContext;
     public static String DOMAIN = "yuemz.aetone.com/yuemz/api";
-    //ä¸»çº¿ç¨‹å›æ‰
+    //Ö÷Ïß³Ì»Øµô
     private static Handler ulHandler;
     public static final String REQUEST_GET = "get";
     public static final String REQUEST_POST = "post";
 
     /**
-     * æ ¹æ®pathç”Ÿæˆå®Œæ•´çš„è·¯å¾„
+     * ¸ù¾İpathÉú³ÉÍêÕûµÄÂ·¾¶
      *
-     * @param path è¯·æ±‚çš„ URL
+     * @param path ÇëÇóµÄ URL
      * @return
      */
     private static String makeFullPath(String path) {
@@ -50,12 +50,12 @@ public class FAppHttpClient {
     }
 
     /**
-     * Get è¯·æ±‚
+     * Get ÇëÇó
      *
-     * @param context      è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param path         å…·ä½“URL
-     * @param handler      è¯·æ±‚å›è°ƒ
-     * @param isNeedCookie æ˜¯å¦éœ€è¦é™„å¸¦cookie
+     * @param context      ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param path         ¾ßÌåURL
+     * @param handler      ÇëÇó»Øµ÷
+     * @param isNeedCookie ÊÇ·ñĞèÒª¸½´øcookie
      */
     public static void get(Context context, String path, AsyncHttpResponseHandler handler, boolean isNeedCookie) {
 
@@ -64,17 +64,17 @@ public class FAppHttpClient {
             asyncHttpClient.setCookieStore(cookieStore);
         }
         String fullPath = makeFullPath(path);
-        D.log("å¼€å§‹è¯·æ±‚:" + fullPath);
+        D.log("¿ªÊ¼ÇëÇó:" + fullPath);
         asyncHttpClient.get(context, fullPath, handler);
     }
 
     /**
-     * å¸¦UDIDçš„Getè¯·æ±‚
+     * ´øUDIDµÄGetÇëÇó
      *
-     * @param context      è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param path         å…·ä½“URL
-     * @param handler      è¯·æ±‚å›è°ƒ
-     * @param isNeedCookie æ˜¯å¦éœ€è¦é™„å¸¦cookie
+     * @param context      ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param path         ¾ßÌåURL
+     * @param handler      ÇëÇó»Øµ÷
+     * @param isNeedCookie ÊÇ·ñĞèÒª¸½´øcookie
      */
     public static void getWithUDID(Context context, String path, AsyncHttpResponseHandler handler, boolean isNeedCookie) {
         if (isNeedCookie) {
@@ -82,18 +82,18 @@ public class FAppHttpClient {
         }
         String fullPath = makeFullPath(path + "&udid="
                 + DeviceUtil.getDeviceId(mApplicationContext));
-        D.log("å¼€å§‹è¯·æ±‚:" + fullPath);
+        D.log("¿ªÊ¼ÇëÇó:" + fullPath);
         asyncHttpClient.get(fullPath, handler);
     }
 
     /**
-     * Postè¯·æ±‚
+     * PostÇëÇó
      *
-     * @param context      è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param path         å…·ä½“URL
-     * @param data         è¯·æ±‚æ•°æ®  Map&lt;String, String&gt;data
-     * @param handler      è¯·æ±‚å›è°ƒ
-     * @param isNeedCookie æ˜¯å¦éœ€è¦é™„å¸¦cookie
+     * @param context      ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param path         ¾ßÌåURL
+     * @param data         ÇëÇóÊı¾İ  Map&lt;String, String&gt;data
+     * @param handler      ÇëÇó»Øµ÷
+     * @param isNeedCookie ÊÇ·ñĞèÒª¸½´øcookie
      */
     public static void post(Context context, String path, Map<String, String> data,
                             JsonHttpResponseHandler handler, boolean isNeedCookie) {
@@ -101,19 +101,19 @@ public class FAppHttpClient {
             asyncHttpClient.setCookieStore(new PersistentCookieStore(mApplicationContext));
         }
         String fullPath = makeFullPath(path);
-        D.log("å¼€å§‹è¯·æ±‚:" + fullPath);
+        D.log("¿ªÊ¼ÇëÇó:" + fullPath);
         RequestParams parm = new RequestParams(data);
         asyncHttpClient.post(context, fullPath, parm, handler);
     }
 
     /**
-     * Postè¯·æ±‚
+     * PostÇëÇó
      *
-     * @param context       è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param path          å…·ä½“URL
-     * @param handler       è¯·æ±‚å›è°ƒ
-     * @param keysAndValues è¯·æ±‚æ•°æ® Object...
-     * @param isNeedCookie  æ˜¯å¦éœ€è¦é™„å¸¦cookie
+     * @param context       ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param path          ¾ßÌåURL
+     * @param handler       ÇëÇó»Øµ÷
+     * @param keysAndValues ÇëÇóÊı¾İ Object...
+     * @param isNeedCookie  ÊÇ·ñĞèÒª¸½´øcookie
      */
     public static void post(Context context, String path, JsonHttpResponseHandler handler, boolean isNeedCookie,
                             Object... keysAndValues) {
@@ -122,17 +122,17 @@ public class FAppHttpClient {
         }
         String fullPath = makeFullPath(path);
         RequestParams parm = new RequestParams(keysAndValues);
-        D.log("å¼€å§‹è¯·æ±‚:" + fullPath + "------" + keysAndValues.toString());
+        D.log("¿ªÊ¼ÇëÇó:" + fullPath + "------" + keysAndValues.toString());
         asyncHttpClient.post(context, fullPath, parm, handler);
     }
 
     /**
-     * ä¸å¸¦å‚æ•°çš„Postè¯·æ±‚
+     * ²»´ø²ÎÊıµÄPostÇëÇó
      *
-     * @param context      è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param path         å…·ä½“URL
-     * @param handler      è¯·æ±‚å›è°ƒ
-     * @param isNeedCookie æ˜¯å¦éœ€è¦é™„å¸¦cookie
+     * @param context      ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param path         ¾ßÌåURL
+     * @param handler      ÇëÇó»Øµ÷
+     * @param isNeedCookie ÊÇ·ñĞèÒª¸½´øcookie
      */
     public static void post(Context context, String path, JsonHttpResponseHandler handler, boolean isNeedCookie) {
         if (isNeedCookie) {
@@ -142,19 +142,19 @@ public class FAppHttpClient {
         String fullPath = makeFullPath(path);
 //        final String udid = UDID.getInstance(mApplicationContext).getUDID();
 //        handler.setContext(mContext);
-        D.log("å¼€å§‹è¯·æ±‚:" + fullPath);
+        D.log("¿ªÊ¼ÇëÇó:" + fullPath);
 //        _client.addHeader("UDID", udid);
         asyncHttpClient.post(context, fullPath, null, handler);
     }
 
     /**
-     * ä¸Šä¼ å›¾ç‰‡
+     * ÉÏ´«Í¼Æ¬
      *
-     * @param context      è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param path         å…·ä½“URL
-     * @param parm         æµæ–‡ä»¶
-     * @param handler      è¯·æ±‚å›è°ƒ
-     * @param isNeedCookie æ˜¯å¦éœ€è¦é™„å¸¦cookie
+     * @param context      ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param path         ¾ßÌåURL
+     * @param parm         Á÷ÎÄ¼ş
+     * @param handler      ÇëÇó»Øµ÷
+     * @param isNeedCookie ÊÇ·ñĞèÒª¸½´øcookie
      */
     public static void postImg(Context context, String path, RequestParams parm,
                                JsonHttpResponseHandler handler, boolean isNeedCookie) {
@@ -162,35 +162,35 @@ public class FAppHttpClient {
             asyncHttpClient.setCookieStore(new PersistentCookieStore(mApplicationContext));
         }
         String fullPath = makeFullPath(path);
-        D.log("å¼€å§‹è¯·æ±‚:" + fullPath);
+        D.log("¿ªÊ¼ÇëÇó:" + fullPath);
         // final String udid = UDID.getInstance(mApplicationContext).getUDID();
         asyncHttpClient.post(context, fullPath, parm, handler);
     }
 
     /**
-     * å‘èµ· å¸¦æ•°æ®ç¼“å­˜çš„ è¯·æ±‚
+     * ·¢Æğ ´øÊı¾İ»º´æµÄ ÇëÇó
      *
-     * @param activity è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param apiKey   xmlä¸­apiçš„æè¿°Kay
-     * @param data     è¯·æ±‚çš„data
-     * @param handler  è¯·æ±‚å›è°ƒ
-     *                 é»˜è®¤å¸¦Cookie
+     * @param activity ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param apiKey   xmlÖĞapiµÄÃèÊöKay
+     * @param data     ÇëÇóµÄdata
+     * @param handler  ÇëÇó»Øµ÷
+     *                 Ä¬ÈÏ´øCookie
      */
     public static void invokeCacheRequest(final Activity activity,
                                           final String apiKey,
                                           final Map<String, String> data,
                                           final FJsonHttpResponesHandler handler) {
 
-        //ç”ŸæˆæŸ¥è¯¢è¯·æ±‚çº¿ç¨‹
+        //Éú³É²éÑ¯ÇëÇóÏß³Ì
         RequestCacheScanThread requestCacheScanThread = new RequestCacheScanThread(activity, apiKey, data, handler);
-        //ç”¨çº¿ç¨‹æ± æ‰§è¡Œ
+        //ÓÃÏß³Ì³ØÖ´ĞĞ
         DefaultThreadPool.getInstance().execute(requestCacheScanThread);
 
     }
 
 
     /**
-     * è·å–Cookie
+     * »ñÈ¡Cookie
      *
      * @return cookieStore
      */
@@ -199,7 +199,7 @@ public class FAppHttpClient {
     }
 
     /**
-     * è®¾ç½®cookie
+     * ÉèÖÃcookie
      *
      * @param cStore
      */

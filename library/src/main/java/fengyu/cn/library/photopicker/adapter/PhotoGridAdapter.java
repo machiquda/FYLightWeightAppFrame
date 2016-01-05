@@ -22,7 +22,7 @@ import fengyu.cn.library.photopicker.utils.MediaStoreHelper;
 
 /**
  * Created by fys on 2015/9/6.
- * <p/>
+ * <p>
  * 图片选择页面适配器   类似GridView 展示
  */
 public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoViewHolder> {
@@ -39,6 +39,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
     public final static int ITEM_TYPE_PHOTO = 101;
     private ArrayList<String> photoPaths = null;
     private boolean hasCamera = true;//默认显示 照相机图标 可照相
+    private int cameraRes = -1;
 
     public PhotoGridAdapter(Context mContext, List<PhotoDirectory> photoDirectories) {
         this.photoDirectories = photoDirectories;
@@ -101,7 +102,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
                         holder.vSelected.setSelected(true);
                         holder.ivPhoto.setSelected(true);
 
-                       // notifyItemChanged(position);
+                        // notifyItemChanged(position);
                         onItemCheckListener.OnItemCheck(position, photo, false,
                                 getSelectedPhotos().size());
                         toggleSelection(photo);
@@ -141,7 +142,11 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
             });
 
         } else {
-            holder.ivPhoto.setImageResource(R.drawable.camera);
+            if (cameraRes != -1) {
+                holder.ivPhoto.setImageResource(cameraRes);
+            } else {
+                holder.ivPhoto.setImageResource(R.drawable.camera);
+            }
         }
     }
 
@@ -207,10 +212,15 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
 
     /**
      * 设置已经选择的图片
+     *
      * @param photoPaths
      */
     public void setPreviousSelectedPhotoPath(ArrayList<String> photoPaths) {
         this.photoPaths = photoPaths;
 
+    }
+
+    public void setCameraRes(int imageRes) {
+        cameraRes = imageRes;
     }
 }

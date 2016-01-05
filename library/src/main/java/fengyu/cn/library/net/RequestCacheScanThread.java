@@ -9,8 +9,8 @@ import org.json.JSONObject;
 import java.util.Map;
 
 /**
- * å¼‚æ­¥ç¼“å­˜æ‰«æ
- * åœ¨å†è¯·æ±‚å‰å…ˆæ‰«æç¼“å­˜ï¼Œå¦‚æžœæœ‰ç¼“å­˜åˆ™ç›´æŽ¥è¿”å›žç¼“å­˜ç»“æžœ
+ * Òì²½»º´æÉ¨Ãè
+ * ÔÚÔÙÇëÇóÇ°ÏÈÉ¨Ãè»º´æ£¬Èç¹ûÓÐ»º´æÔòÖ±½Ó·µ»Ø»º´æ½á¹û
  * Created by fys on 2015/12/6.
  */
 public class RequestCacheScanThread implements Runnable {
@@ -26,11 +26,11 @@ public class RequestCacheScanThread implements Runnable {
 
     /**
      *
-     * @param activity è¯·æ±‚çš„Activity å–æ¶ˆæ ‡è®°
-     * @param apiKey   xmlä¸­apiçš„æè¿°Kay
-     * @param data     è¯·æ±‚çš„data
-     * @param handler  è¯·æ±‚å›žè°ƒ
-     *                 é»˜è®¤å¸¦Cookie
+     * @param activity ÇëÇóµÄActivity È¡Ïû±ê¼Ç
+     * @param apiKey   xmlÖÐapiµÄÃèÊöKay
+     * @param data     ÇëÇóµÄdata
+     * @param handler  ÇëÇó»Øµ÷
+     *                 Ä¬ÈÏ´øCookie
      */
     public RequestCacheScanThread(final Activity activity,
                                   final String apiKey,
@@ -48,10 +48,10 @@ public class RequestCacheScanThread implements Runnable {
     public void run() {
 
         try {
-            //èŽ·å–apikeyå¯¹åº”çš„URLç±»å®žä½“
+            //»ñÈ¡apikey¶ÔÓ¦µÄURLÀàÊµÌå
             final URLData urlData = UrlConfigManager.findURL(activity, apiKey);
             final StringBuffer paramBuffer = new StringBuffer();
-            //å¦‚æžœæ˜¯getè¯·æ±‚æ‹¼æŽ¥å‚æ•°
+            //Èç¹ûÊÇgetÇëÇóÆ´½Ó²ÎÊý
             if ((data != null) && (data.size() > 0) && urlData.getNetType().equals(REQUEST_GET)) {
                 for (String key : data.keySet()) {
                     System.out.println("key= " + key + " and value= " + data.get(key));
@@ -71,7 +71,7 @@ public class RequestCacheScanThread implements Runnable {
                 handler.setUrlData(urlData);
                 handler.setFinalRequestUrl(newUrl);
             }
-            // å¦‚æžœè¿™ä¸ªAPIæœ‰ç¼“å­˜æ—¶é—´ï¼ˆå¤§äºŽ0ï¼‰
+            // Èç¹ûÕâ¸öAPIÓÐ»º´æÊ±¼ä£¨´óÓÚ0£©
             if (urlData.getExpires() > 0) {
                 final String content = CacheManager.getInstance()
                         .getFileCache(newUrl);

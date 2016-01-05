@@ -212,7 +212,7 @@ public class FysXListView extends ListView implements OnScrollListener {
 	private void updateHeaderHeight(float delta) {
 		mHeaderView.setVisiableHeight((int) delta
 				+ mHeaderView.getVisiableHeight());
-		if (mEnablePullRefresh && !mPullRefreshing) { // æœªå¤„äºåˆ·æ–°çŠ¶æ€ï¼Œæ›´æ–°ç®­å¤´
+		if (mEnablePullRefresh && !mPullRefreshing) { // Î´´¦ÓÚË¢ĞÂ×´Ì¬£¬¸üĞÂ¼ıÍ·
 			if (mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
 				mHeaderView.setState(FysXListViewHeader.STATE_READY);
 			} else {
@@ -237,7 +237,7 @@ public class FysXListView extends ListView implements OnScrollListener {
 		// is refreshing, just scroll back to show all the header.
 		if (mPullRefreshing && height > mHeaderViewHeight) {
 			finalHeight = mHeaderViewHeight;
-			//è®¾ç½®åˆ·æ–°æ—¶Headerçš„é«˜åº¦
+			//ÉèÖÃË¢ĞÂÊ±HeaderµÄ¸ß¶È
 			mScroller.startScroll(0, height, 0, 200,
 					SCROLL_DURATION);
 		}else{
@@ -372,9 +372,9 @@ public class FysXListView extends ListView implements OnScrollListener {
 	}
 
 	/**
-	 * è¿™ä¸ªæ–¹æ³•æ˜¯æ ¹æ®ç»“æœçš„å¤§å°æ¥å†³å®šfooteræ˜¾ç¤ºçš„ã€‚
+	 * Õâ¸ö·½·¨ÊÇ¸ù¾İ½á¹ûµÄ´óĞ¡À´¾ö¶¨footerÏÔÊ¾µÄ¡£
 	 * <p>
-	 * è¿™é‡Œå‡å®šæ¯æ¬¡è¯·æ±‚çš„æ¡æ•°ä¸º10ã€‚å¦‚æœè¯·æ±‚åˆ°äº†10æ¡ã€‚åˆ™è®¤ä¸ºè¿˜æœ‰æ•°æ®ã€‚å¦‚è¿‡ç»“æœä¸è¶³10æ¡ï¼Œåˆ™è®¤ä¸ºæ•°æ®å·²ç»å…¨éƒ¨åŠ è½½ï¼Œè¿™æ—¶footeræ˜¾ç¤ºå·²ç»å…¨éƒ¨åŠ è½½
+	 * ÕâÀï¼Ù¶¨Ã¿´ÎÇëÇóµÄÌõÊıÎª10¡£Èç¹ûÇëÇóµ½ÁË10Ìõ¡£ÔòÈÏÎª»¹ÓĞÊı¾İ¡£Èç¹ı½á¹û²»×ã10Ìõ£¬ÔòÈÏÎªÊı¾İÒÑ¾­È«²¿¼ÓÔØ£¬ÕâÊ±footerÏÔÊ¾ÒÑ¾­È«²¿¼ÓÔØ
 	 * </p>
 	 *
 	 * @param resultSize

@@ -6,6 +6,28 @@ photopicker 包的作用是提供了一个类似微信的照片选择界面，
    intent.setPhotoCount(count);
    intent.setShowCamera(true);
    startActivityForResult(intent, requestCode);
+
+
+   注意要在AndroidMainfest.xml 中添加这两个Activity
+     <activity
+       android:name="fengyu.cn.library.photopicker.PhotoPagerActivity"
+       android:label="@string/app_name"
+       android:theme="@style/AppTheme.NoActionBar"></activity>
+     <activity
+       android:name="fengyu.cn.library.photopicker.PhotoPickerActivity"
+       android:label="@string/app_name"
+       android:theme="@style/AppTheme.NoActionBar"></activity>
+
+     同时AppTheme的parent 改为Theme.AppCompat.NoActionBar
+
+     加入权限
+     <!-- 允许应用打开操作相机 -->
+     <uses-permission android:name="android.permission.CAMERA" />
+     <uses-permission android:name="android.permission.FLASHLIGHT" />
+     <uses-feature android:name="android.hardware.camera" />
+     <uses-feature android:name="android.hardware.camera.autofocus" />
+     <!-- 允许震动控制 -->
+     <uses-permission android:name="android.permission.VIBRATE" />
 会把选择的照片在手机中的存储位置返回。
 Photo_X_View
 一个类似九宫格展示图片的的自定义UI控件

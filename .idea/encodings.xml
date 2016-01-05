@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/BaseUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/CacheItem.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/CacheManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/DefaultThreadPool.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/FAppHttpClient.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/FJsonHttpResponesHandler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/RequestCacheScanThread.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/ResponseStatusCode.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/net/URLData.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/photopicker/adapter/FPhotoPickerAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/photopicker/adapter/PhotoGridAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/photopicker/event/FPhotoPickerItemTouchHelperCallback.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/photopicker/event/OnItemCheckListener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/photopicker/utils/ImageCaptureManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/photopicker/utils/MediaStoreHelper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/photopicker/widget/FPhotoPicker.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/utils/ActivityStackControlUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/utils/AddressbookUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/utils/DateUtils.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/utils/DeviceUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/utils/DialogUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/utils/DictionaryCollection.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/utils/VibratorUtil.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/views/BaseListAdapter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/views/FUtimateListView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/views/FysPullToRefreshHeaderView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/views/FysXListView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/views/FysXListViewHeader.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/library/src/main/java/fengyu/cn/library/views/InitViewController.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

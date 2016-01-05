@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\exploded-aar\fengyu.cn.library\library\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="473d1b2f2a0c9bb711ad7baee19a0d4dc85bf2d7">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\fengyu.cn.library-library-1.0.1_260a25f4f8dfcef67613f60f9a0c10f9df414954.jar" />
+    </item>
+    <item
+        jar="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_e546e0cfb026f46279fb3d0b29edcb642f2b999f.jar" />
+    </item>
+    <item
+        jar="C:\Users\fys\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.4.1.1\c8d96f6fd2bcc179c312da33ee670a71188cc60d\httpclient-4.4.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c8d96f6fd2bcc179c312da33ee670a71188cc60d">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\httpclient-4.4.1.1_a8fa2bd285368eeac8050982d7c9ffc4caa21b8a.jar" />
+    </item>
+    <item
+        jar="E:\adt-bundle-windows-x86_64-20140321\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_15951ac6e1befe5f2baa5aac02aca3a61eaa7e6c.jar" />
+    </item>
+    <item
+        jar="C:\Users\fys\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\library-2.4.0_7d8d0fc058166d0f1d22f494cc81159765ecf3cc.jar" />
+    </item>
+    <item
+        jar="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_50280a549f3f289a4a1ed4969b51cbcc0a58ebe5.jar" />
+    </item>
+    <item
+        jar="C:\Users\fys\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.6.0\a7537446a030da8eb0da4c71424d16c2589f6c4a\glide-3.6.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\glide-3.6.0_7929b34dee3be1e7a6ea28e3a4b4ceb810928d82.jar" />
+    </item>
+    <item
+        jar="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_ad6e1ec6fbe851bebfb0fe160a321349103f2214.jar" />
+    </item>
+    <item
+        jar="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_1b2467b1c41a6648d974706d079765d3e676a373.jar" />
+    </item>
+    <item
+        jar="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="E:\AndroidStudioWorkspace\FYLightWeightAppFrame\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_9d0fb659f78052066f5cad0722942172ca561cee.jar" />
+    </item>
+
+</items>

@@ -104,9 +104,9 @@ public class FPhotoPickerAdapter extends RecyclerView.Adapter<FPhotoPickerAdapte
                 if (position < photoPaths.size()) {
                     if (mPhotoClickListener != null) {
                         //手动设置了点击事件
-                        mPhotoClickListener.onPhotoClick(holder, position, photoPaths.get(position));
+                        mPhotoClickListener.onPhotoClick(holder, position, photoPaths);
                     } else {
-//                        //还没有达到挑选上限  开始挑选
+//                       //还没有达到挑选上限  开始挑选
 //                        if (position == photoPaths.size()) {
 //                            PhotoPickerIntent intent = new PhotoPickerIntent(mContext);
 //                            intent.setPhotoCount(photoPickSize);
@@ -249,9 +249,10 @@ public class FPhotoPickerAdapter extends RecyclerView.Adapter<FPhotoPickerAdapte
          *
          * @param holder           当前item的Viewholder  可以获取View
          * @param position         当前item的在数据源中的位置
-         * @param currentPhotoPath 当前图片的路径
+
+         * @param photoPaths       当前adapter的数据源
          */
-        void onPhotoClick(PhotoViewHolder holder, int position, String currentPhotoPath);
+        void onPhotoClick(PhotoViewHolder holder, int position,  ArrayList<String> photoPaths);
     }
 
     public void setPhotoPickSize(int photoPickSize) {

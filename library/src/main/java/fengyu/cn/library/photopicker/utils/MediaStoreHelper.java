@@ -101,11 +101,11 @@ public class MediaStoreHelper {
     }
 
     /**
-     * 图片初始化接口
+     * ͼƬ��ʼ���ӿ�
      */
     public interface initCallback{
         /**
-         * 当匹配到之前选择的图片时调用
+         * ��ƥ�䵽֮ǰѡ���ͼƬʱ����
          */
         void onMachingPhotoPath();
     }

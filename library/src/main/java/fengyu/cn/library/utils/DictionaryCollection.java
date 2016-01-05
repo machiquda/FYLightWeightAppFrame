@@ -2,5 +2,5 @@ package fengyu.cn.library.utils;
 
 public class DictionaryCollection {
 
-	public static String[] MYINFO_SEX = { "ç”·", "å¥³" };
+	public static String[] MYINFO_SEX = { "ÄÐ", "Å®" };
 }

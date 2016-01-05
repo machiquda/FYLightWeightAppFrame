@@ -52,7 +52,7 @@ public class FysXListViewHeader extends LinearLayout {
 	}
 
 	private void initView(Context context) {
-		// åˆå§‹æƒ…å†µï¼Œè®¾ç½®ä¸‹æ‹‰åˆ·æ–°viewé«˜åº¦ä¸º0
+		// ³õÊ¼Çé¿ö£¬ÉèÖÃÏÂÀ­Ë¢ĞÂview¸ß¶ÈÎª0
 		LayoutParams lp = new LayoutParams(
 				LayoutParams.FILL_PARENT, 0);
 		mContainer = (LinearLayout) LayoutInflater.from(context).inflate(
@@ -80,11 +80,11 @@ public class FysXListViewHeader extends LinearLayout {
 		if (state == mState)
 			return;
 
-		if (state == STATE_REFRESHING) { // æ˜¾ç¤ºè¿›åº¦
+		if (state == STATE_REFRESHING) { // ÏÔÊ¾½ø¶È
 			mArrowImageView.clearAnimation();
 			mArrowImageView.setVisibility(View.INVISIBLE);
 			//cv.setReflesh(true);
-		} else { // æ˜¾ç¤ºç®­å¤´å›¾ç‰‡
+		} else { // ÏÔÊ¾¼ıÍ·Í¼Æ¬
 			mArrowImageView.setVisibility(View.VISIBLE);
 			//cv.setReflesh(false);
 
