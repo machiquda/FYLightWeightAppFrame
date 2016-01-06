@@ -53,7 +53,7 @@ public class ActivityStackControlUtil {
 		}
 		Intent intent = new Intent();
 		// intent.setClass(activity, RegisterActivity.class);
-		intent.putExtra("type", "ÑéÖ¤ĞÂÊÖ»ú");
+		intent.putExtra("type", "éªŒè¯æ–°æ‰‹æœº");
 		activity.startActivity(intent);
 	}
 

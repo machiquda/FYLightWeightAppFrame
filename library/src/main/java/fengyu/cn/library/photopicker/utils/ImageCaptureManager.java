@@ -17,12 +17,12 @@ import java.util.Date;
 /**
  * http://developer.android.com/training/camera/photobasics.html
  * update by fys on 2015/10/14
- * ÅÄÕÕ¹¤¾ßÀà
+ * æ‹ç…§å·¥å…·ç±»
  */
 public class ImageCaptureManager {
 
-    public static final int STORAGE_STRATEGY_PERPETUAL = 0;//ÓÀ¾Ã´¢´æ
-    public static final int STORAGE_STRATEGY_TEMPORARY = 1;//ÁÙÊ±´¢´æ
+    public static final int STORAGE_STRATEGY_PERPETUAL = 0;//æ°¸ä¹…å‚¨å­˜
+    public static final int STORAGE_STRATEGY_TEMPORARY = 1;//ä¸´æ—¶å‚¨å­˜
     private final static String CAPTURED_PHOTO_PATH_KEY = "mCurrentPhotoPath";
     public static final int REQUEST_TAKE_PHOTO = 1;
 
@@ -34,7 +34,7 @@ public class ImageCaptureManager {
     }
 
     /**
-     * »ñÈ¡Î´Ìî³äÊı¾İµÄImageÎÄ¼ş
+     * è·å–æœªå¡«å……æ•°æ®çš„Imageæ–‡ä»¶
      *
      * @return
      * @throws IOException
@@ -62,17 +62,17 @@ public class ImageCaptureManager {
     }
 
     /**
-     * »ñÈ¡ÒªÉú³ÉÍ¼Æ¬µÄUri
+     * è·å–è¦ç”Ÿæˆå›¾ç‰‡çš„Uri
      *
      * @return
      */
     private Uri getTempPhotoUri() {
         Uri photoUri = null;
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        //Í¼Æ¬Ãû³Æ
+        //å›¾ç‰‡åç§°
         String imageFileName = "Cosmeapp_" + timeStamp + ".jpg";
         String status = Environment.getExternalStorageState();
-        //Íâ²¿´¢´æ½éÖÊÊÇ·ñ¹ÒÔØ
+        //å¤–éƒ¨å‚¨å­˜ä»‹è´¨æ˜¯å¦æŒ‚è½½
         if (status.equals(Environment.MEDIA_MOUNTED)) {//
 
             ContentValues values = new ContentValues();
@@ -87,8 +87,8 @@ public class ImageCaptureManager {
     }
 
     /**
-     * ·µ»ØÅÄÕÕIntent
-     * Õâ¸ö·½·¨½«»á°ÑÅÄÉãµÄÕÕÆ¬<b>ÁÙÊ±</b>´¢´æÔÚÏµÍ³Ïà»úÅÄÕÕµÄÄ¿Â¼
+     * è¿”å›æ‹ç…§Intent
+     * è¿™ä¸ªæ–¹æ³•å°†ä¼šæŠŠæ‹æ‘„çš„ç…§ç‰‡<b>ä¸´æ—¶</b>å‚¨å­˜åœ¨ç³»ç»Ÿç›¸æœºæ‹ç…§çš„ç›®å½•
      *
      * @return
      * @throws IOException
@@ -109,8 +109,8 @@ public class ImageCaptureManager {
     }
 
     /**
-     * ·µ»ØÅÄÕÕIntent
-     * Õâ¸ö·½·¨½«»á°ÑÅÄÉãµÄÕÕÆ¬<b>ÓÀ¾Ã</b>´¢´æÔÚÏµÍ³Ïà»úÅÄÕÕµÄÄ¿Â¼
+     * è¿”å›æ‹ç…§Intent
+     * è¿™ä¸ªæ–¹æ³•å°†ä¼šæŠŠæ‹æ‘„çš„ç…§ç‰‡<b>æ°¸ä¹…</b>å‚¨å­˜åœ¨ç³»ç»Ÿç›¸æœºæ‹ç…§çš„ç›®å½•
      *
      * @return
      */
@@ -122,7 +122,7 @@ public class ImageCaptureManager {
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
                         photoUri);
 
-                //»ñÈ¡¾ø¶ÔÂ·¾¶ Îª²åÈëÉ¨Ãè×ö×¼±¸
+                //è·å–ç»å¯¹è·¯å¾„ ä¸ºæ’å…¥æ‰«æåšå‡†å¤‡
                 mCurrentPhotoPath = getFilePathByContentResolver(
                         mContext, photoUri);
 

@@ -1,27 +1,27 @@
 package fengyu.cn.library.net;
 
 /**
- * URL ÊµÌå
+ * URL å®ä½“
  */
 public class URLData {
     /**
-     * url key  Æ¥Åä¹Ø¼ü×Ö
+     * url key  åŒ¹é…å…³é”®å­—
      */
     private String key;
     /**
-     * ¹ıÆÚÊ±³¤
+     * è¿‡æœŸæ—¶é•¿
      */
     private long expires;
     /**
-     * ÇëÇóÀà±ğ
+     * è¯·æ±‚ç±»åˆ«
      */
     private String netType;
     /**
-     * ÇëÇóURL
+     * è¯·æ±‚URL
      */
     private String url;
     /**
-     * Êı¾İ·µ»Ø¶ÔÓ¦ÊµÌå
+     * æ•°æ®è¿”å›å¯¹åº”å®ä½“
      */
     private String mockClass;
 

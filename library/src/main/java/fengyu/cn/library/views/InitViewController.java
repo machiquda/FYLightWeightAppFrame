@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import fengyu.cn.library.R;
 
 /**
- * ״ָ̬ʾ��
+ * 状态指示器
  */
 public class InitViewController extends RelativeLayout {
 
@@ -43,7 +43,7 @@ public class InitViewController extends RelativeLayout {
     }
 
     /**
-     * �ı�ָʾ����״̬
+     * 改变指示器的状态
      *
      * @param state
      */
@@ -115,7 +115,7 @@ public class InitViewController extends RelativeLayout {
     }
 
     /**
-     * ����Indicater��ģʽ
+     * 设置Indicater的模式
      *
      * @param Mode
      */

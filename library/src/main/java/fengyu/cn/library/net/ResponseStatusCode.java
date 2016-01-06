@@ -6,7 +6,7 @@ package fengyu.cn.library.net;
 
 
 /**
- * ÇëÇó×´Ì¬¶¨Òå
+ * è¯·æ±‚çŠ¶æ€å®šä¹‰
  */
 public class ResponseStatusCode {
 

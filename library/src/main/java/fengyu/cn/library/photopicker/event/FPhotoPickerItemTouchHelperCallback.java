@@ -57,7 +57,7 @@ public class FPhotoPickerItemTouchHelperCallback extends ItemTouchHelper.Callbac
     }
 
     /**
-     * ¸ù¾İ²»Í¬µÄ LayoutManager ¸³ÓèItem  ²»Í¬»¬¶¯ÍÏ¶¯Ğ§¹û
+     * æ ¹æ®ä¸åŒçš„ LayoutManager èµ‹äºˆItem  ä¸åŒæ»‘åŠ¨æ‹–åŠ¨æ•ˆæœ
      *
      * @param recyclerView
      * @param viewHolder

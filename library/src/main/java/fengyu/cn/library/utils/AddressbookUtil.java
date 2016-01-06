@@ -13,17 +13,17 @@ public class AddressbookUtil {
 		Contact contact = new Contact();
 		ContentResolver cr = context.getContentResolver();
 		Cursor phone = null;
-		// È¡µÃµç»°±¾ÖĞ¿ªÊ¼Ò»ÏîµÄ¹â±ê
+		// å–å¾—ç”µè¯æœ¬ä¸­å¼€å§‹ä¸€é¡¹çš„å…‰æ ‡
 		Cursor cursor = cr.query(uri, null, null, null, null);
 		try {
 			if (cursor != null) {
 				cursor.moveToFirst();
-				// È¡µÃÁªÏµÈËÃû×Ö
+				// å–å¾—è”ç³»äººåå­—
 				int nameFieldColumnIndex = cursor
 						.getColumnIndex(PhoneLookup.DISPLAY_NAME);
 				contact.setName(cursor.getString(nameFieldColumnIndex));
 
-				// È¡µÃµç»°ºÅÂë
+				// å–å¾—ç”µè¯å·ç 
 				String ContactId = cursor.getString(cursor
 						.getColumnIndex(ContactsContract.Contacts._ID));
 				phone = cr.query(

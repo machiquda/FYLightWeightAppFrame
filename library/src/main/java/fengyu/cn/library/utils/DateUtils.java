@@ -50,10 +50,10 @@ public class DateUtils
 
 	public static String FormatLocalDatetime(int year, int month, int day)
 	{
-		// String date = String.valueOf(year) + "Äê" + String.valueOf(month) +
-		// "ÔÂ"
-		// + String.valueOf(day) + "ÈÕ";
-		String date = String.valueOf(month) + "ÔÂ" + String.valueOf(day) + "ÈÕ";
+		// String date = String.valueOf(year) + "å¹´" + String.valueOf(month) +
+		// "æœˆ"
+		// + String.valueOf(day) + "æ—¥";
+		String date = String.valueOf(month) + "æœˆ" + String.valueOf(day) + "æ—¥";
 		return date;
 	}
 }

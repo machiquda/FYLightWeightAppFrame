@@ -18,35 +18,35 @@ import fengyu.cn.library.R;
 
 public class FysPullToRefreshHeaderView extends View {
 	private PorterDuffXfermode porterDuffXfermode;// Xfermode
-	private Paint paint;// »­±Ê
-	private Bitmap bitmap;// Ô´Í¼Æ¬
-	private int width, height;// ¿Ø¼ş¿í¸ß
-	private Path path;// »­±´Èû¶ûÇúÏßĞèÒªÓÃµ½
-	private Canvas mCanvas;// ÔÚ¸Ã»­²¼ÉÏ»æÖÆÄ¿±êÍ¼Æ¬
-	private Bitmap bg;// Ä¿±êÍ¼Æ¬
+	private Paint paint;// ç”»ç¬”
+	private Bitmap bitmap;// æºå›¾ç‰‡
+	private int width, height;// æ§ä»¶å®½é«˜
+	private Path path;// ç”»è´å¡å°”æ›²çº¿éœ€è¦ç”¨åˆ°
+	private Canvas mCanvas;// åœ¨è¯¥ç”»å¸ƒä¸Šç»˜åˆ¶ç›®æ ‡å›¾ç‰‡
+	private Bitmap bg;// ç›®æ ‡å›¾ç‰‡
 
-	private float controlX, controlY;// ±´Èû¶ûÇúÏß¿ØÖÆµã£¬Ê¹ÓÃÈı½×±´Èû¶ûÇúÏßÇúÏß£¬ĞèÒªÁ½¸ö¿ØÖÆµã£¬Á½¸ö¿ØÖÆµã¶¼ÔÚ¸Ã±äÁ¿»ù´¡ÉÏÉú³É
-	private float waveY;// ÉÏÉıµÄ¸ß¶È
+	private float controlX, controlY;// è´å¡å°”æ›²çº¿æ§åˆ¶ç‚¹ï¼Œä½¿ç”¨ä¸‰é˜¶è´å¡å°”æ›²çº¿æ›²çº¿ï¼Œéœ€è¦ä¸¤ä¸ªæ§åˆ¶ç‚¹ï¼Œä¸¤ä¸ªæ§åˆ¶ç‚¹éƒ½åœ¨è¯¥å˜é‡åŸºç¡€ä¸Šç”Ÿæˆ
+	private float waveY;// ä¸Šå‡çš„é«˜åº¦
 
-	private boolean isIncrease;// ÓÃÓÚ¿ØÖÆ¿ØÖÆµãË®Æ½ÒÆ¶¯
+	private boolean isIncrease;// ç”¨äºæ§åˆ¶æ§åˆ¶ç‚¹æ°´å¹³ç§»åŠ¨
 
-	private boolean isReflesh = false;// ÊÇ·ñË¢ĞÂ²¢²úÉúÌî³äĞ§¹û£¬Ä¬ÈÏÎªtrue
+	private boolean isReflesh = false;// æ˜¯å¦åˆ·æ–°å¹¶äº§ç”Ÿå¡«å……æ•ˆæœï¼Œé»˜è®¤ä¸ºtrue
 
 	/**
-	 * @return ÊÇ·ñË¢ĞÂ
+	 * @return æ˜¯å¦åˆ·æ–°
 	 */
 	public boolean isReflesh() {
 		return isReflesh;
 	}
 
 	/**
-	 * Ìá¹©½Ó¿ÚÉèÖÃË¢ĞÂ
+	 * æä¾›æ¥å£è®¾ç½®åˆ·æ–°
 	 * 
 	 * @param isReflesh
 	 */
 	public void setReflesh(boolean isReflesh) {
 		this.isReflesh = isReflesh;
-		// ÖØ»æ
+		// é‡ç»˜
 		postInvalidate();
 	}
 
@@ -77,136 +77,136 @@ public class FysPullToRefreshHeaderView extends View {
 	}
 
 	/**
-	 * ³õÊ¼»¯±äÁ¿
+	 * åˆå§‹åŒ–å˜é‡
 	 */
 	private void init() {
-		// ³õÊ¼»¯»­±Ê
+		// åˆå§‹åŒ–ç”»ç¬”
 		paint = new Paint();
 		paint.setAntiAlias(true);
 		paint.setDither(true);
 		paint.setStyle(Paint.Style.FILL);
 		paint.setColor(Color.parseColor("#ffc9394a"));
-		// »ñµÃ×ÊÔ´ÎÄ¼ş
+		// è·å¾—èµ„æºæ–‡ä»¶
 		bitmap = BitmapFactory.decodeResource(getResources(),
 				R.drawable.fys_pulltorefresh_header_img);
-		// ÉèÖÃ¿í¸ßÎªÍ¼Æ¬µÄ¿í¸ß
+		// è®¾ç½®å®½é«˜ä¸ºå›¾ç‰‡çš„å®½é«˜
 		width = bitmap.getWidth();
 		height = bitmap.getHeight();
 
-		// ³õÊ¼×´Ì¬Öµ
+		// åˆå§‹çŠ¶æ€å€¼
 		waveY = 7 / 8F * height;
 		controlY = 17 / 16F * height;
 
-		// ³õÊ¼»¯Xfermode
+		// åˆå§‹åŒ–Xfermode
 		porterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
-		// ³õÊ¼»¯path
+		// åˆå§‹åŒ–path
 		path = new Path();
-		// ³õÊ¼»¯»­²¼
+		// åˆå§‹åŒ–ç”»å¸ƒ
 		mCanvas = new Canvas();
-		// ´´½¨bitmap
+		// åˆ›å»ºbitmap
 		bg = Bitmap.createBitmap(width, height, Config.ARGB_8888);
-		// ½«ĞÂ½¨µÄbitmap×¢Èë»­²¼
+		// å°†æ–°å»ºçš„bitmapæ³¨å…¥ç”»å¸ƒ
 		mCanvas.setBitmap(bg);
 
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		// »­Ä¿±êÍ¼£¬´æÔÚbgÉÏ
+		// ç”»ç›®æ ‡å›¾ï¼Œå­˜åœ¨bgä¸Š
 		drawTargetBitmap();
-		// ½«Ä¿±êÍ¼»æÖÆÔÚµ±Ç°»­²¼ÉÏ£¬ÆğµãÎª×ó±ß¾à£¬ÉÏ±ß¾àµÄ½»µã
+		// å°†ç›®æ ‡å›¾ç»˜åˆ¶åœ¨å½“å‰ç”»å¸ƒä¸Šï¼Œèµ·ç‚¹ä¸ºå·¦è¾¹è·ï¼Œä¸Šè¾¹è·çš„äº¤ç‚¹
 		canvas.drawBitmap(bg, getPaddingLeft(), getPaddingTop(), null);
 		if (isReflesh) {
-			// ÖØ»æ£¬Ê¹ÓÃboolean±äÁ¿isReflesh½øĞĞ¿ØÖÆ£¬²¢¶ÔÍâÌá¹©·ÃÎÊµÄ½Ó¿Ú,Ä¬ÈÏÎªtrueÇÒË¢ĞÂ
+			// é‡ç»˜ï¼Œä½¿ç”¨booleanå˜é‡isRefleshè¿›è¡Œæ§åˆ¶ï¼Œå¹¶å¯¹å¤–æä¾›è®¿é—®çš„æ¥å£,é»˜è®¤ä¸ºtrueä¸”åˆ·æ–°
 			invalidate();
 		}
 	}
 
 	private void drawTargetBitmap() {
-		// ÖØÖÃpath
+		// é‡ç½®path
 		path.reset();
-		// ²Á³ıÏñËØ
+		// æ“¦é™¤åƒç´ 
 		bg.eraseColor(Color.parseColor("#00ffffff"));
 
-		// µ±¿ØÖÆµãµÄx×ø±ê´óÓÚ»òµÈÓÚÖÕµãx×ø±êÊ±¸ü¸Ä±êÊ¶Öµ
+		// å½“æ§åˆ¶ç‚¹çš„xåæ ‡å¤§äºæˆ–ç­‰äºç»ˆç‚¹xåæ ‡æ—¶æ›´æ”¹æ ‡è¯†å€¼
 		if (controlX >= width + 1 / 2 * width) {
 			isIncrease = false;
 		}
-		// µ±¿ØÖÆµãµÄx×ø±êĞ¡ÓÚ»òµÈÓÚÆğµãx×ø±êÊ±¸ü¸Ä±êÊ¶Öµ
+		// å½“æ§åˆ¶ç‚¹çš„xåæ ‡å°äºæˆ–ç­‰äºèµ·ç‚¹xåæ ‡æ—¶æ›´æ”¹æ ‡è¯†å€¼
 		else if (controlX <= -1 / 2 * width) {
 			isIncrease = true;
 		}
 
-		// ¸ù¾İ±êÊ¶ÖµÅĞ¶Ïµ±Ç°µÄ¿ØÖÆµãx×ø±êÊÇ¸Ã¼Ó»¹ÊÇ¼õ
+		// æ ¹æ®æ ‡è¯†å€¼åˆ¤æ–­å½“å‰çš„æ§åˆ¶ç‚¹xåæ ‡æ˜¯è¯¥åŠ è¿˜æ˜¯å‡
 		controlX = isIncrease ? controlX + 10 : controlX - 10;
 		if (controlY >= 0) {
-			// ²¨ÀËÉÏÒÆ
+			// æ³¢æµªä¸Šç§»
 			controlY -= 1;
 			waveY -= 1;
 		} else {
-			// ³¬³öÔòÖØÖÃÎ»ÖÃ
+			// è¶…å‡ºåˆ™é‡ç½®ä½ç½®
 			waveY = 7 / 8F * height;
 			controlY = 17 / 16F * height;
 		}
 
-		// ±´Èû¶ûÇúÏßµÄÉú³É
+		// è´å¡å°”æ›²çº¿çš„ç”Ÿæˆ
 		path.moveTo(0, waveY);
-		// Á½¸ö¿ØÖÆµãÍ¨¹ıcontrolX£¬controlYÉú³É
+		// ä¸¤ä¸ªæ§åˆ¶ç‚¹é€šè¿‡controlXï¼ŒcontrolYç”Ÿæˆ
 		path.cubicTo(controlX / 2, waveY - (controlY - waveY),
 				(controlX + width) / 2, controlY, width, waveY);
-		// ÓëÏÂÏÂ±ß½ç±ÕºÏ
+		// ä¸ä¸‹ä¸‹è¾¹ç•Œé—­åˆ
 		path.lineTo(width, height);
 		path.lineTo(0, height);
-		// ½øĞĞ±ÕºÏ
+		// è¿›è¡Œé—­åˆ
 		path.close();
 
-		// ÒÔÉÏ»­±´Èû¶ûÇúÏß´úÂë²Î¿¼×Ô°®¸ç²©¿Í
+		// ä»¥ä¸Šç”»è´å¡å°”æ›²çº¿ä»£ç å‚è€ƒè‡ªçˆ±å“¥åšå®¢
 		// http://blog.csdn.net/aigestudio/article/details/41960507
 
-		mCanvas.drawBitmap(bitmap, 0, 0, paint);// »­Ä½¿ÎÍølogo
-		paint.setXfermode(porterDuffXfermode);// ÉèÖÃXfermode
-		mCanvas.drawPath(path, paint);// »­Èı½×±´Èû¶ûÇúÏß
-		paint.setXfermode(null);// ÖØÖÃXfermode
+		mCanvas.drawBitmap(bitmap, 0, 0, paint);// ç”»æ…•è¯¾ç½‘logo
+		paint.setXfermode(porterDuffXfermode);// è®¾ç½®Xfermode
+		mCanvas.drawPath(path, paint);// ç”»ä¸‰é˜¶è´å¡å°”æ›²çº¿
+		paint.setXfermode(null);// é‡ç½®Xfermode
 	}
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		// »ñµÃ¿í¸ß²âÁ¿Ä£Ê½ºÍ´óĞ¡
+		// è·å¾—å®½é«˜æµ‹é‡æ¨¡å¼å’Œå¤§å°
 		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
 		int widthSize = MeasureSpec.getSize(widthMeasureSpec);
 		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 		int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-		// ±£´æ²âÁ¿½á¹û
+		// ä¿å­˜æµ‹é‡ç»“æœ
 		int width, height;
 
 		if (widthMode == MeasureSpec.EXACTLY) {
-			// ¿í¶È
+			// å®½åº¦
 			width = widthSize;
 		} else {
-			// ¿í¶È¼Ó×óÓÒÄÚ±ß¾à
+			// å®½åº¦åŠ å·¦å³å†…è¾¹è·
 			width = this.width + getPaddingLeft() + getPaddingRight();
 			;
 			if (widthMode == MeasureSpec.AT_MOST) {
-				// È¡Ğ¡µÄÄÇ¸ö
+				// å–å°çš„é‚£ä¸ª
 				width = Math.min(width, widthSize);
 			}
 
 		}
 
 		if (heightMode == MeasureSpec.EXACTLY) {
-			// ¸ß¶È
+			// é«˜åº¦
 			height = heightSize;
 		} else {
-			// ¸ß¶È¼Ó×óÓÒÄÚ±ß¾à
+			// é«˜åº¦åŠ å·¦å³å†…è¾¹è·
 			height = this.height + getPaddingTop() + getPaddingBottom();
 			;
 			if (heightMode == MeasureSpec.AT_MOST) {
-				// È¡Ğ¡µÄÄÇ¸ö
+				// å–å°çš„é‚£ä¸ª
 				height = Math.min(height, heightSize);
 			}
 
 		}
-		// ÉèÖÃ¸ß¶È¿í¶ÈÎªlogo¿í¶ÈºÍ¸ß¶È,Êµ¼Ê¿ª·¢ÖĞÓ¦¸ÃÅĞ¶ÏMeasureSpecµÄÄ£Ê½£¬½øĞĞ¶ÔÓ¦µÄÂß¼­´¦Àí,ÕâÀï×öÁË¼òµ¥µÄÅĞ¶Ï²âÁ¿
+		// è®¾ç½®é«˜åº¦å®½åº¦ä¸ºlogoå®½åº¦å’Œé«˜åº¦,å®é™…å¼€å‘ä¸­åº”è¯¥åˆ¤æ–­MeasureSpecçš„æ¨¡å¼ï¼Œè¿›è¡Œå¯¹åº”çš„é€»è¾‘å¤„ç†,è¿™é‡Œåšäº†ç®€å•çš„åˆ¤æ–­æµ‹é‡
 		setMeasuredDimension(width, height);
 
 	}

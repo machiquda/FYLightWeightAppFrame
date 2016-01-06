@@ -6,23 +6,23 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Ïß³Ì³Ø ¡¢»º³å¶ÓÁĞ
+ * çº¿ç¨‹æ±  ã€ç¼“å†²é˜Ÿåˆ—
  */
 public class DefaultThreadPool {
-    // ×èÈû¶ÓÁĞ×î´óÈÎÎñÊıÁ¿
+    // é˜»å¡é˜Ÿåˆ—æœ€å¤§ä»»åŠ¡æ•°é‡
     static final int BLOCKING_QUEUE_SIZE = 20;
     static final int THREAD_POOL_MAX_SIZE = 10;
 
     static final int THREAD_POOL_SIZE = 6;
     /**
-     * »º³åBaseRequestÈÎÎñ¶ÓÁĞ
+     * ç¼“å†²BaseRequestä»»åŠ¡é˜Ÿåˆ—
      */
     static ArrayBlockingQueue<Runnable> blockingQueue = new ArrayBlockingQueue<Runnable>(
             DefaultThreadPool.BLOCKING_QUEUE_SIZE);
 
     private static DefaultThreadPool instance = null;
     /**
-     * Ïß³Ì³Ø£¬Ä¿Ç°ÊÇÊ®¸öÏß³Ì£¬
+     * çº¿ç¨‹æ± ï¼Œç›®å‰æ˜¯åä¸ªçº¿ç¨‹ï¼Œ
      */
     static AbstractExecutorService pool = new ThreadPoolExecutor(
             DefaultThreadPool.THREAD_POOL_SIZE,
@@ -52,7 +52,7 @@ public class DefaultThreadPool {
     }
 
     /**
-     * ¹Ø±Õ£¬²¢µÈ´ıÈÎÎñÖ´ĞĞÍê³É£¬²»½ÓÊÜĞÂÈÎÎñ
+     * å…³é—­ï¼Œå¹¶ç­‰å¾…ä»»åŠ¡æ‰§è¡Œå®Œæˆï¼Œä¸æ¥å—æ–°ä»»åŠ¡
      */
     public static void shutdown() {
         if (DefaultThreadPool.pool != null) {
@@ -61,13 +61,13 @@ public class DefaultThreadPool {
     }
 
     /**
-     * ¹Ø±Õ£¬Á¢¼´¹Ø±Õ£¬²¢¹ÒÆğËùÓĞÕıÔÚÖ´ĞĞµÄÏß³Ì£¬²»½ÓÊÜĞÂÈÎÎñ
+     * å…³é—­ï¼Œç«‹å³å…³é—­ï¼Œå¹¶æŒ‚èµ·æ‰€æœ‰æ­£åœ¨æ‰§è¡Œçš„çº¿ç¨‹ï¼Œä¸æ¥å—æ–°ä»»åŠ¡
      */
     public static void shutdownRightnow() {
         if (DefaultThreadPool.pool != null) {
             DefaultThreadPool.pool.shutdownNow();
             try {
-                // ÉèÖÃ³¬Ê±¼«¶Ì£¬Ç¿ÖÆ¹Ø±ÕËùÓĞÈÎÎñ
+                // è®¾ç½®è¶…æ—¶æçŸ­ï¼Œå¼ºåˆ¶å…³é—­æ‰€æœ‰ä»»åŠ¡
                 DefaultThreadPool.pool.awaitTermination(1,
                         TimeUnit.MICROSECONDS);
             } catch (final InterruptedException e) {
@@ -77,7 +77,7 @@ public class DefaultThreadPool {
     }
 
     /**
-     * Ö´ĞĞÈÎÎñ
+     * æ‰§è¡Œä»»åŠ¡
      *
      * @param r
      */

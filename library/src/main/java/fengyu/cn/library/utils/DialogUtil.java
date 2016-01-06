@@ -35,8 +35,8 @@ public class DialogUtil
 
 	// public static final AlertDialog getExitAlertDialog(Context context){
 	// AlertDialog alert = new AlertDialog(context);
-	// alert.setIcon(R.drawable.btn_i).setTitle("¾¯¸æ");
-	// alert.setMessage("È·ÈÏÍË³ö³ÌĞòÂğ£¿");
+	// alert.setIcon(R.drawable.btn_i).setTitle("è­¦å‘Š");
+	// alert.setMessage("ç¡®è®¤é€€å‡ºç¨‹åºå—ï¼Ÿ");
 	// return alert;
 	// }
 }

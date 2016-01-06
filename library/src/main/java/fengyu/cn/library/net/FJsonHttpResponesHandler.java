@@ -16,12 +16,12 @@ public class FJsonHttpResponesHandler extends JsonHttpResponseHandler {
 
 
     /**
-     * 请求时URL 信息
+     * 璇锋眰鏃禪RL 淇℃伅
      */
     private   URLData urlData ;
 
     /**
-     * 最终请求时带参数的Url
+     * 鏈�缁堣姹傛椂甯﹀弬鏁扮殑Url
      */
     private String finalRequestUrl;
 
@@ -79,11 +79,11 @@ public class FJsonHttpResponesHandler extends JsonHttpResponseHandler {
     }
 
     /**
-     * 返回数据类型是JSONObject
+     * 杩斿洖鏁版嵁绫诲瀷鏄疛SONObject
      *
      * @param statusCode
      * @param headers
-     * @param response   返JSONObject
+     * @param response   杩擩SONObject
      */
 
     @Override

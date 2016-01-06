@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *ListView Adapter »ùÀà
+ *ListView Adapter åŸºç±»
  */
 abstract public class BaseListAdapter<T> extends BaseAdapter implements
         View.OnClickListener {
@@ -20,7 +20,7 @@ abstract public class BaseListAdapter<T> extends BaseAdapter implements
     protected LayoutInflater mInflater;
 
     Context mContext;
-    //dataSourceÊı¾İÔ´
+    //dataSourceæ•°æ®æº
     List<T> mList;
     public static Application mAppliacation;
 
@@ -33,7 +33,7 @@ abstract public class BaseListAdapter<T> extends BaseAdapter implements
     }
 
     /**
-     * ·µ»Ø°ó¶¨µÄÊı¾İ
+     * è¿”å›ç»‘å®šçš„æ•°æ®
      * @return  List &lt T &gt dataSource
      */
     public List<T> getData() {
@@ -42,7 +42,7 @@ abstract public class BaseListAdapter<T> extends BaseAdapter implements
 
 
     /**
-     *ÅúÁ¿Ìí¼Ó
+     *æ‰¹é‡æ·»åŠ 
      * @param  list   List &lt T &gt
      */
     public void addData(List<T> list) {
@@ -62,7 +62,7 @@ abstract public class BaseListAdapter<T> extends BaseAdapter implements
 
 
     /**
-     * µ¥ÌõÌí¼Ó
+     * å•æ¡æ·»åŠ 
      * @param data
      * @param position
      */
@@ -71,7 +71,7 @@ abstract public class BaseListAdapter<T> extends BaseAdapter implements
     }
 
     /**
-     * ÅúÁ¿Ìí¼Ó
+     * æ‰¹é‡æ·»åŠ 
      * @param dataList
      * @param position
      */
