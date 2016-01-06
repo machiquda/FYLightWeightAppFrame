@@ -2,30 +2,29 @@
 <fengyu.cn.library.photopicker.widget.SquareItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+   >
+
     <ImageView
-        android:padding="1dip"
-        android:layout_gravity="center"
         android:id="@+id/iv_photo"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:background="@drawable/photo_bg"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:adjustViewBounds="true"
-        />
+        android:background="@drawable/photo_bg"
+        android:padding="1dip"
+        android:scaleType="centerCrop" />
 
 
     <ImageView
-        android:layout_margin="5dip"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:clickable="true"
-        android:padding="10dip"
         android:id="@+id/delete"
-
-        android:src="@drawable/fphotopicker_delete_photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dip"
+
+        android:clickable="true"
+        android:padding="10dip"
+        android:src="@drawable/fphotopicker_delete_photo" />
 
 </fengyu.cn.library.photopicker.widget.SquareItemLayout>

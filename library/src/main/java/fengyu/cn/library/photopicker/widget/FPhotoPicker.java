@@ -1,6 +1,7 @@
 package fengyu.cn.library.photopicker.widget;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -53,7 +54,8 @@ public class FPhotoPicker extends LinearLayout implements OnStartDragListener {
     }
 
     /**
-     *设置选择图片的个数
+     * 设置选择图片的个数
+     *
      * @param size
      */
     public void setPhotoPickSize(int size) {
@@ -63,12 +65,12 @@ public class FPhotoPicker extends LinearLayout implements OnStartDragListener {
     }
 
     /**
-     *设置FPhotoPicker 展示列数
+     * 设置FPhotoPicker 展示列数
      *
      * @param columns
      */
     public void setColumns(int columns) {
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(columns, OrientationHelper.VERTICAL));
+        recyclerView.setLayoutManager(new GridLayoutManager(context, columns));
         recyclerView.setAdapter(photoAdapter);
     }
 
@@ -119,4 +121,18 @@ public class FPhotoPicker extends LinearLayout implements OnStartDragListener {
         }
         return null;
     }
+
+    /**
+     * 设置九宫格每个Item的间距
+     *
+     * @param leftSpace   左侧间距
+     * @param topSpace    上方间距
+     * @param rightSpace  右侧间距
+     * @param bottomSpace 下方间距
+     */
+    public void setItemSpace(int leftSpace, int topSpace, int rightSpace, int bottomSpace) {
+        recyclerView.addItemDecoration(new SpacesItemDecoration(leftSpace, topSpace, rightSpace, bottomSpace));
+
+    }
+
 }
