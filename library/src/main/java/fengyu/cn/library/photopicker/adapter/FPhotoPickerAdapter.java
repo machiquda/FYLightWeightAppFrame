@@ -156,7 +156,7 @@ public class FPhotoPickerAdapter extends RecyclerView.Adapter<FPhotoPickerAdapte
 
         notifyItemRemoved(position);
         notifyItemChanged(position);
-       
+
     }
 
     @Override
