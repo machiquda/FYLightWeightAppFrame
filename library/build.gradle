@@ -38,9 +38,9 @@ dependencies {
     compile 'cz.msebera.android:httpclient:4.4.1.1'
 }
 
-def siteUrl = 'https://github.com/machiquda/FYLightWeightAppFrame'      // 项目的主页
-def gitUrl = 'https://github.com/machiquda/FYLightWeightAppFrame.git'   // Git仓库的url
-group = "fengyu.cn.library" // Maven Group ID for the artifact，一般填你唯一的包名
+def siteUrl = 'https://github.com/machiquda/FYLightWeightAppFrame'
+def gitUrl = 'https://github.com/machiquda/FYLightWeightAppFrame.git'
+group = "fengyu.cn.library" // Maven Group ID for the artifact
 
 install {
     repositories.mavenInstaller {
@@ -61,7 +61,7 @@ install {
                 }
                 developers {
                     developer {
-                        id 'fengyu'       //填写开发者基本信息
+                        id 'fengyu'
                         name 'fengyu'
                         email '409511656@qq.com'
                     }
@@ -103,8 +103,8 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "maven"  //发布到Bintray的那个仓库里，默认账户有四个库，我们这里上传到maven库
-        name = "flightweightappframe"  //发布到Bintray上的项目名字
+        repo = "maven"
+        name = "flightweightappframe"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
@@ -112,29 +112,3 @@ bintray {
     }
 }
 
-
-//ext {
-//    bintrayRepo = 'maven'
-//    bintrayName = 'flightweightappframe'
-//
-//    publishedGroupId = 'fengyu.cn.library'
-//    libraryName = 'FBLike'
-//    artifact = 'FWFrame'
-//
-//    libraryDescription = 'A APP Weight Frame  on Android'
-//
-//    siteUrl = 'https://github.com/machiquda/FYLightWeightAppFrame'
-//    gitUrl = 'https://github.com/machiquda/FYLightWeightAppFrame.git'
-//
-//    libraryVersion = '1.0.1'
-//
-//    developerId = 'fengyu'
-//    developerName = 'fengyu'
-//    developerEmail = '409511656@qq.com'
-//
-//    licenseName = 'The Apache Software License, Version 2.0'
-//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//    allLicenses = ["Apache-2.0"]
-//}
-//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

@@ -101,22 +101,12 @@ public class FPhotoPickerAdapter extends RecyclerView.Adapter<FPhotoPickerAdapte
         holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (position < photoPaths.size()) {
                     if (mPhotoClickListener != null) {
                         //手动设置了点击事件
-                        mPhotoClickListener.onPhotoClick(holder, position, photoPaths);
+                        mPhotoClickListener.onPhotoClick(holder, holder.getLayoutPosition(), photoPaths);
                     } else {
-//                       //还没有达到挑选上限  开始挑选
-//                        if (position == photoPaths.size()) {
-//                            PhotoPickerIntent intent = new PhotoPickerIntent(mContext);
-//                            intent.setPhotoCount(photoPickSize);
-//                            intent.putExtra("storageMode", currentMode);
-//                            if (photoPaths != null && photoPaths.size() > 0) {
-//                                intent.putStringArrayListExtra("photoPaths", photoPaths);
-//                            }
-//                            ((Activity) mContext).startActivityForResult(intent, FPhotoPicker.REQUEST_CODE);
-//                        } else {
-                        //预览图片
                         Intent intent = new Intent(mContext, PhotoPagerActivity.class);
                         intent.putExtra(PhotoPagerActivity.EXTRA_CURRENT_ITEM, position);
                         intent.putExtra(PhotoPagerActivity.EXTRA_PHOTOS, photoPaths);
@@ -166,6 +156,7 @@ public class FPhotoPickerAdapter extends RecyclerView.Adapter<FPhotoPickerAdapte
 
         notifyItemRemoved(position);
         notifyItemChanged(position);
+       
     }
 
     @Override
@@ -173,6 +164,7 @@ public class FPhotoPickerAdapter extends RecyclerView.Adapter<FPhotoPickerAdapte
         //添加图片按钮不移动
         if (toPosition >= photoPaths.size())
             return false;
+
         Collections.swap(photoPaths, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
         return true;
@@ -213,6 +205,36 @@ public class FPhotoPickerAdapter extends RecyclerView.Adapter<FPhotoPickerAdapte
 
                 }
             });
+
+//            ivPhoto.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (getLayoutPosition() < photoPaths.size()) {
+//                        if (mPhotoClickListener != null) {
+//                            //手动设置了点击事件
+//                            mPhotoClickListener.onPhotoClick(null, getLayoutPosition() , photoPaths);
+//                        } else {
+//                            Intent intent = new Intent(mContext, PhotoPagerActivity.class);
+//                            intent.putExtra(PhotoPagerActivity.EXTRA_CURRENT_ITEM, getLayoutPosition() );
+//                            intent.putExtra(PhotoPagerActivity.EXTRA_PHOTOS, photoPaths);
+//                            if (mContext instanceof Activity) {
+//                                ((Activity) mContext).startActivityForResult(intent, FPhotoPicker.REQUEST_CODE);
+//                            }
+////                        }
+//
+//                        }
+//                    } else {
+//                        //还没有达到挑选上限  开始挑选
+//                        PhotoPickerIntent intent = new PhotoPickerIntent(mContext);
+//                        intent.setPhotoCount(photoPickSize);
+//                        intent.putExtra("storageMode", currentMode);
+//                        if (photoPaths != null && photoPaths.size() > 0) {
+//                            intent.putStringArrayListExtra("photoPaths", photoPaths);
+//                        }
+//                        ((Activity) mContext).startActivityForResult(intent, FPhotoPicker.REQUEST_CODE);
+//                    }
+//                }
+//            });
         }
 
 
