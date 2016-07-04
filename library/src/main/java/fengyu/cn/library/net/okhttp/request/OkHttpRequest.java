@@ -5,6 +5,7 @@ import java.util.Map;
 
 import fengyu.cn.library.net.okhttp.AbstractFOkhttpHandler;
 import fengyu.cn.library.net.okhttp.CacheType;
+import okhttp3.CacheControl;
 import okhttp3.Headers;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -20,11 +21,16 @@ public abstract class OkHttpRequest {
     protected Map<String, String> headers;
     protected int id;
     protected Class<?> parseClass;
-    protected @CacheType int cacheType;
+    /**
+     * 缓存策略 默认由服务器判断是否使用缓存
+     */
+    protected
+    @CacheType
+    int cacheType = CacheType.NETWORK_ELSE_CACHED;
     protected Request.Builder builder = new Request.Builder();
 
     protected OkHttpRequest(String url, Object tag,
-                            Map<String, String> params, Map<String, String> headers, int id, Class<?> parseClass, @CacheType int cacheType ) {
+                            Map<String, String> params, Map<String, String> headers, int id, Class<?> parseClass, @CacheType int cacheType) {
         this.url = url;
         this.tag = tag;
         this.params = params;
@@ -46,22 +52,22 @@ public abstract class OkHttpRequest {
     private void initBuilder() {
         builder.url(url).tag(tag);
         appendHeaders();
+        addCacheCategory();
     }
 
     /**
-     *
      * @return
      */
     protected abstract RequestBody buildRequestBody();
 
     /**
      * 给子类提供包装RequestBody 的方法
+     *
      * @param requestBody
      * @param callback
      * @return
      */
-    protected RequestBody wrapRequestBody(RequestBody requestBody, final AbstractFOkhttpHandler callback)
-    {
+    protected RequestBody wrapRequestBody(RequestBody requestBody, final AbstractFOkhttpHandler callback) {
         return requestBody;
     }
 
@@ -73,6 +79,7 @@ public abstract class OkHttpRequest {
 
     /**
      * 生成 Request
+     *
      * @param callback
      * @return
      */
@@ -98,6 +105,17 @@ public abstract class OkHttpRequest {
 
     public int getId() {
         return id;
+    }
+
+    /**
+     * 添加缓存策略
+     */
+    private void addCacheCategory() {
+        if (CacheType.ONLY_NETWORK == cacheType) {
+            builder.cacheControl(CacheControl.FORCE_NETWORK);
+        } else if (CacheType.ONLY_CACHED == cacheType) {
+            builder.cacheControl(CacheControl.FORCE_CACHE);
+        }
     }
 
 }

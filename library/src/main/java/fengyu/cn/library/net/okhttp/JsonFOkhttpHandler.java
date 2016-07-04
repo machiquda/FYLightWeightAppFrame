@@ -3,11 +3,11 @@ package fengyu.cn.library.net.okhttp;
 
 import android.util.Log;
 
+import fengyu.cn.library.net.okhttp.request.ResponseFormatType;
 import okhttp3.Headers;
 
 
 /**
- *
  * Created by fys on 2016/6/16.
  */
 public class JsonFOkhttpHandler extends AbstractFOkhttpHandler {
@@ -20,6 +20,17 @@ public class JsonFOkhttpHandler extends AbstractFOkhttpHandler {
      * 请求拒绝
      */
     private static final int REQUEST_DENY = -5;
+
+
+    public JsonFOkhttpHandler() {
+
+    }
+
+    public JsonFOkhttpHandler(@ResponseFormatType int responseFormatType) {
+
+        this.responseFormatType = responseFormatType;
+
+    }
 
     /**
      * call when request been deny

@@ -43,6 +43,8 @@ public abstract class OkHttpRequestBuilder<T extends OkHttpRequestBuilder> {
      */
     protected int id;
 
+
+
     public T parseClass(Class<?> aClass) {
         this.aClass = aClass;
         return (T) this;

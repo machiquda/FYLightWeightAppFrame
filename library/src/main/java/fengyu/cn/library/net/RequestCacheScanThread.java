@@ -108,7 +108,7 @@ public class RequestCacheScanThread implements Runnable {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
 
     }

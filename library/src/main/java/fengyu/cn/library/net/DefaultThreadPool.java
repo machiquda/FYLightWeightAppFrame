@@ -71,7 +71,7 @@ public class DefaultThreadPool {
                 DefaultThreadPool.pool.awaitTermination(1,
                         TimeUnit.MICROSECONDS);
             } catch (final InterruptedException e) {
-                e.printStackTrace();
+
             }
         }
     }
@@ -86,7 +86,7 @@ public class DefaultThreadPool {
             try {
                 DefaultThreadPool.pool.execute(r);
             } catch (final Exception e) {
-                e.printStackTrace();
+
             }
         }
     }

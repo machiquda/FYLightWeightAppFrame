@@ -78,7 +78,7 @@ public class RequestCall {
      */
     public void execute(AbstractFOkhttpHandler callback) {
         buildCall(callback);
-        FOkhttpClient.getInstance().get(this, okHttpRequest.cacheType, callback, okHttpRequest.parseClass, okHttpRequest.tag);
+        FOkhttpClient.getInstance().executeCall(this, okHttpRequest.cacheType, callback, okHttpRequest.parseClass, okHttpRequest.tag);
     }
 
     public Call getCall() {

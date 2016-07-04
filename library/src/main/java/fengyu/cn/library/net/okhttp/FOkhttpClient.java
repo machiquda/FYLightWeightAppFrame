@@ -174,7 +174,17 @@ public class FOkhttpClient {
         request(call, cacheType, abstractFOkhttpHandler, tag, classes);
     }
 
-    public void get(RequestCall requestCall, @CacheType int cacheType, AbstractFOkhttpHandler abstractFOkhttpHandler, Class<?> classes, Object tag) {
+
+    /**
+     * 执行由Builder构造的请求
+     *
+     * @param requestCall            RequestCall  see {@link RequestCall}
+     * @param cacheType              缓存使用策略
+     * @param abstractFOkhttpHandler AbstractFOkhttpHandler  see  {@link AbstractFOkhttpHandler}
+     * @param classes                请求结果希望解析成的对象类
+     * @param tag                    请求标识
+     */
+    public void executeCall(RequestCall requestCall, @CacheType int cacheType, AbstractFOkhttpHandler abstractFOkhttpHandler, Class<?> classes, Object tag) {
         request(requestCall.getCall(), cacheType, abstractFOkhttpHandler, tag, classes);
     }
 
@@ -357,7 +367,7 @@ public class FOkhttpClient {
                             //返回对象
                             if (response.body() != null) {
                                 //文件下载请求  直接 返回response 不做处理
-                                if (abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.FILE_RESPONSE) {
+                                if (abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.FILE_RESPONSE || abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.STRING) {
                                     if (abstractFOkhttpHandler != null) {
                                         Result result = new Result();
                                         result.setNetWorkStatusCode(response.code());

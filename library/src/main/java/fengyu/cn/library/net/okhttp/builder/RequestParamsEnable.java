@@ -3,7 +3,7 @@ package fengyu.cn.library.net.okhttp.builder;
 import java.util.Map;
 
 /**
- * 添加参数的接口 需要添加can
+ * 添加参数的接口 需要添加参数的实现此接口
  * Created by fys on 2016/6/27.
  */
 public interface RequestParamsEnable {

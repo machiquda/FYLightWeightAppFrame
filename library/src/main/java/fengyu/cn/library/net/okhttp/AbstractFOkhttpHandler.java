@@ -7,7 +7,7 @@ import android.os.Message;
 import fengyu.cn.library.net.okhttp.request.ResponseFormatType;
 
 /**
- * FOkhttp抽象基类
+ * FOkhttp请求回调抽象基类
  * Created by fys on 2016/6/15.
  */
 public abstract class AbstractFOkhttpHandler extends Handler {
@@ -26,7 +26,7 @@ public abstract class AbstractFOkhttpHandler extends Handler {
      */
     protected
     @ResponseFormatType
-    int responseFormatType = ResponseFormatType.STAND;
+    int responseFormatType = ResponseFormatType.JSON_STRING;
 
 
     public AbstractFOkhttpHandler() {
