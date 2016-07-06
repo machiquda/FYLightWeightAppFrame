@@ -345,120 +345,140 @@ public class FOkhttpClient {
             abstractFOkhttpHandler.callOnLoading();
             call.enqueue(new okhttp3.Callback() {
 
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    if (abstractFOkhttpHandler != null) {
-                        sendFailResultCallback(call, e, abstractFOkhttpHandler, null, tag);
-                        return;
-                    }
-                }
+                             @Override
+                             public void onFailure(Call call, IOException e) {
+                                 if (abstractFOkhttpHandler != null) {
+                                     sendFailResultCallback(call, e, abstractFOkhttpHandler, null, tag);
+                                     return;
+                                 }
+                             }
 
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
+                             @Override
+                             public void onResponse(Call call, Response response) throws IOException {
 
-                    try {
-                        if (!response.isSuccessful()) {
-                            //请求失败
-                            if (abstractFOkhttpHandler != null) {
-                                sendFailResultCallback(call, null, abstractFOkhttpHandler, response, tag);
-                                return;
-                            }
-                        } else {
-                            //返回对象
-                            if (response.body() != null) {
-                                //文件下载请求  直接 返回response 不做处理
-                                if (abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.FILE_RESPONSE || abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.STRING) {
-                                    if (abstractFOkhttpHandler != null) {
-                                        Result result = new Result();
-                                        result.setNetWorkStatusCode(response.code());
-                                        result.setTag(tag);
-                                        result.setData(response);
-                                        result.setHeaders(response.headers());
-                                        result.setDataType(Result.OTHER);
-                                        abstractFOkhttpHandler.callOnSuccess(result);
-                                        return;
-                                    }
+                                 try {
+                                     if (!response.isSuccessful()) {
+                                         //请求失败
+                                         if (abstractFOkhttpHandler != null) {
+                                             sendFailResultCallback(call, null, abstractFOkhttpHandler, response, tag);
+                                             return;
+                                         }
+                                     } else {
+                                         //返回对象
+                                         if (response.body() != null) {
+                                             //文件下载请求  直接 返回response 不做处理
+                                             if (abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.FILE_RESPONSE || abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.STRING) {
+                                                 if (abstractFOkhttpHandler != null) {
+                                                     Result result = new Result();
+                                                     result.setNetWorkStatusCode(response.code());
+                                                     result.setTag(tag);
+                                                     result.setData(response);
+                                                     result.setHeaders(response.headers());
+                                                     result.setDataType(Result.OTHER);
+                                                     abstractFOkhttpHandler.callOnSuccess(result);
+                                                     return;
+                                                 }
 
-                                }
+                                             }
 
-                                //检查返回数据是否为 json 字符串
-                                JSONObject jsonObject = null;
-                                try {
-                                    jsonObject = JSON.parseObject(response.body().string());
-                                } catch (Exception e) {
-                                    //不是json 字符串 检查 contentType 不是json格式的  直接返回数据
-                                    if (response.body() != null && response.body().contentType() != MediaType.parse("application/json") && response.body().contentType() != MediaType.parse("text/json")) {
-                                        if (abstractFOkhttpHandler != null) {
-                                            Result result = new Result();
-                                            result.setNetWorkStatusCode(response.code());
-                                            result.setTag(tag);
-                                            result.setData(response.body());
-                                            result.setHeaders(response.headers());
-                                            result.setDataType(Result.OTHER);
-                                            abstractFOkhttpHandler.callOnSuccess(result);
-                                            return;
-                                        }
-                                    } else {
+                                             //检查返回数据是否为 json 字符串
+                                             JSONObject jsonObject = null;
+                                             try {
+                                                 jsonObject = JSON.parseObject(response.body().string());
+                                             } catch (Exception e) {
+                                                 //不是json 字符串 检查 contentType 不是json格式的  直接返回数据
+                                                 if (response.body() != null && response.body().contentType() != MediaType.parse("application/json") && response.body().contentType() != MediaType.parse("text/json")) {
+                                                     if (abstractFOkhttpHandler != null) {
+                                                         Result result = new Result();
+                                                         result.setNetWorkStatusCode(response.code());
+                                                         result.setTag(tag);
+                                                         result.setData(response.body());
+                                                         result.setHeaders(response.headers());
+                                                         result.setDataType(Result.OTHER);
+                                                         abstractFOkhttpHandler.callOnSuccess(result);
+                                                         return;
+                                                     }
+                                                 } else {
 
-                                        if (abstractFOkhttpHandler != null) {
-                                            sendFailResultCallback(call, e, abstractFOkhttpHandler, response, tag);
-                                            return;
-                                        }
-                                    }
-                                }
-                                //返回data为空
+                                                     if (abstractFOkhttpHandler != null) {
+                                                         sendFailResultCallback(call, e, abstractFOkhttpHandler, response, tag);
+                                                         return;
+                                                     }
+                                                 }
+                                             }
 
-                                final String data = jsonObject.getString("data");
-                                if (classes == null) {
-                                    if (abstractFOkhttpHandler != null) {
-                                        Result result = new Result();
-                                        result.setMessage(jsonObject.getString("message"));
-                                        result.setNetWorkStatusCode(response.code());
-                                        result.setTag(tag);
-                                        if (data == null) {
-                                            if (jsonObject == null) {
-                                                result.setData(response.body());
-                                            } else {
-                                                result.setData(jsonObject);
-                                            }
-                                        } else {
-                                            result.setData(data);
-                                        }
-                                        result.setCode(jsonObject.getIntValue("code"));
-                                        result.setHeaders(response.headers());
-                                        result.setDataType(Result.OTHER);
-                                        abstractFOkhttpHandler.callOnSuccess(result);
-                                        return;
-                                    }
-                                } else {
+                                             /**
+                                              * 判断返回数据是否是 { data,code,message}格式
+                                              */
+                                             final String data = jsonObject.getString("data");
+                                             final String code = jsonObject.getString("code");
+                                             if (data == null || code == null) {
+                                                 if (abstractFOkhttpHandler != null) {
+                                                     Result result = new Result();
+                                                     result.setNetWorkStatusCode(response.code());
+                                                     result.setTag(tag);
+                                                     result.setData(jsonObject.toJSONString());
+                                                     result.setHeaders(response.headers());
+                                                     result.setDataType(Result.OTHER);
+                                                     abstractFOkhttpHandler.callOnSuccess(result);
+                                                     return;
 
-                                    Object re = JSON.parseObject(data, classes);
-                                    Result result = new Result();
-                                    result.setMessage(jsonObject.getString("message"));
-                                    result.setNetWorkStatusCode(response.code());
-                                    result.setCode(jsonObject.getIntValue("code"));
-                                    result.setTag(tag);
-                                    result.setData(re);
-                                    result.setHeaders(response.headers());
-                                    result.setDataType(Result.STAND);
-                                    abstractFOkhttpHandler.callOnSuccess(result);
-                                    return;
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        sendFailResultCallback(call, e, abstractFOkhttpHandler, response, tag);
-                    } finally {
-                        // 如果是下载文件  先不关闭 inputSteam
-                        if (response.body() != null && abstractFOkhttpHandler.getResponseFormatType() != ResponseFormatType.FILE_RESPONSE)
-                            response.body().close();
-                    }
-                }
-            });
+                                                 }
+                                             } else {
+                                                 if (classes == null) {
+                                                     if (abstractFOkhttpHandler != null) {
+                                                         Result result = new Result();
+                                                         result.setMessage(jsonObject.getString("message"));
+                                                         result.setNetWorkStatusCode(response.code());
+                                                         result.setTag(tag);
+                                                         if (data == null) {
+                                                             if (jsonObject == null) {
+                                                                 result.setData(response.body());
+                                                             } else {
+                                                                 result.setData(jsonObject);
+                                                             }
+                                                         } else {
+                                                             result.setData(data);
+                                                         }
+                                                         result.setCode(jsonObject.getIntValue("code"));
+                                                         result.setHeaders(response.headers());
+                                                         result.setDataType(Result.OTHER);
+                                                         abstractFOkhttpHandler.callOnSuccess(result);
+                                                         return;
+                                                     }
+                                                 } else {
+
+                                                     Object re = JSON.parseObject(data, classes);
+                                                     Result result = new Result();
+                                                     result.setMessage(jsonObject.getString("message"));
+                                                     result.setNetWorkStatusCode(response.code());
+                                                     result.setCode(jsonObject.getIntValue("code"));
+                                                     result.setTag(tag);
+                                                     result.setData(re);
+                                                     result.setHeaders(response.headers());
+                                                     result.setDataType(Result.STAND);
+                                                     abstractFOkhttpHandler.callOnSuccess(result);
+                                                     return;
+                                                 }
+                                             }
+                                         }
+                                     }
+                                 } catch (Exception e) {
+                                     sendFailResultCallback(call, e, abstractFOkhttpHandler, response, tag);
+                                 } finally {
+                                     // 如果是下载文件  先不关闭 inputSteam
+                                     // if (response.body() != null && abstractFOkhttpHandler.getResponseFormatType() != ResponseFormatType.FILE_RESPONSE)
+                                     response.body().close();
+                                 }
+                             }
+                         }
+
+            );
         }
     }
 
-    private RequestBody createFormRequestBody(Map<String, String> params, String encodedKey, String encodedValue) {
+    private RequestBody createFormRequestBody(Map<String, String> params, String
+            encodedKey, String encodedValue) {
         FormBody.Builder builder = new FormBody.Builder();
         if (params != null && !params.isEmpty()) {
             Set<String> keys = params.keySet();
@@ -626,7 +646,8 @@ public class FOkhttpClient {
      * @param response
      * @param tag
      */
-    private void sendFailResultCallback(final Call call, final Exception e, final AbstractFOkhttpHandler callbacHandlerk, Response response, Object tag) {
+    private void sendFailResultCallback(final Call call, final Exception e,
+                                        final AbstractFOkhttpHandler callbacHandlerk, Response response, Object tag) {
         Result result = new Result();
         result.setErrorCode(Result.FAILURE_RESPONSE);
         if (response != null) {

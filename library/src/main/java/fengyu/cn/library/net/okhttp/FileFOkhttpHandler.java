@@ -54,7 +54,33 @@ public class FileFOkhttpHandler extends AbstractFOkhttpHandler {
 
     @Override
     protected void asyncOnSuccess(Result result) {
-        Log.w(TAG, "asyncOnSuccess (Result result) was not overriden, but callback was received");
+
+        //cookie 过期
+        if (result.getCode() == COOKIE_EXPIRE) {
+            onCookieExpired();
+
+        } else if (result.getCode() == REQUEST_DENY) {
+            //请求被拒绝
+            onRequestDeny(result.getMessage());
+        } else {
+            if (result.getData() != null) {
+                if (result.getData() instanceof Response) {
+                    try {
+                        int id = 0;
+                        if (result.getTag() instanceof Integer) {
+                            id = (int) result.getTag();
+                        }
+                        saveFile((Response) result.getData(), id);
+                    } catch (IOException e) {
+                        Log.e(TAG, "saveFile with exception  : ", e);
+
+                    }
+                } else {
+                    Log.e(TAG, "saveFile with exception  :  result  type  is not response ");
+                }
+            }
+        }
+
     }
 
     @Override
@@ -88,31 +114,7 @@ public class FileFOkhttpHandler extends AbstractFOkhttpHandler {
     @Override
     protected void syncOnSuccess(Result result) {
 
-        //cookie 过期
-        if (result.getCode() == COOKIE_EXPIRE) {
-            onCookieExpired();
-
-        } else if (result.getCode() == REQUEST_DENY) {
-            //请求被拒绝
-            onRequestDeny(result.getMessage());
-        } else {
-            if (result.getData() != null) {
-                if (result.getData() instanceof Response) {
-                    try {
-                        int id = 0;
-                        if (result.getTag() instanceof Integer) {
-                            id = (int) result.getTag();
-                        }
-                        saveFile((Response) result.getData(), id);
-                    } catch (IOException e) {
-                        Log.e(TAG, "saveFile with exception  : ", e);
-
-                    }
-                } else {
-                    Log.e(TAG, "saveFile with exception  :  result  type  is not response ");
-                }
-            }
-        }
+        Log.w(TAG, "syncOnSuccess (Result result) was not overriden, but callback was received");
     }
 
     @Override
@@ -146,6 +148,9 @@ public class FileFOkhttpHandler extends AbstractFOkhttpHandler {
                 dir.mkdirs();
             }
             File file = new File(dir, destFileName);
+            if( !file.exists()) {
+                file.createNewFile();
+            }
             fos = new FileOutputStream(file);
             while ((len = is.read(buf)) != -1) {
                 sum += len;
@@ -153,7 +158,15 @@ public class FileFOkhttpHandler extends AbstractFOkhttpHandler {
                 final long finalSum = sum;
 
 
-                syncInProgress(finalSum * 1.0f / total, total, id);
+                abstractFOkhttpHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if ((finalSum * 1.0f / total) > 0.5 && (finalSum * 1.0f / total) < 0.6) {
+                            String a = "";
+                        }
+                        syncInProgress(finalSum * 1.0f / total, total, id);
+                    }
+                }, 1000);
 
             }
             fos.flush();

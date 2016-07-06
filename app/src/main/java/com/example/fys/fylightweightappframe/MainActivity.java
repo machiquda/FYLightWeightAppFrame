@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                }, "a");
 
-                String urla = "http://dl.zongheng.com/book/479435.zip?";
+                String urla = "http://dl.zongheng.com/book/69507.zip?";
 
 //                FOkhttpClient
 //                        .get()
@@ -93,8 +93,16 @@ public class MainActivity extends AppCompatActivity {
 
 
                     @Override
-                    protected void syncInProgress(float progress, long total, Object id) {
-                        mProgressBar.setProgress((int) (100 * progress));
+                    protected void syncInProgress(final float progress, long total, Object id) {
+
+                       // mProgressBar.setProgress((int) (100 * progress));
+                        mProgressBar.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                mProgressBar.setProgress((int) (100 * progress));
+                            }
+                        });
+                        Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "inProgress :" + (int) (100 * progress));
                     }
                 });

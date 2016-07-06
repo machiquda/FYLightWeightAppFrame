@@ -19,7 +19,7 @@ public abstract class AbstractFOkhttpHandler extends Handler {
     public static final int CALLBACK_FINISH = 0x04;
     public static final int CAllBACK_INPROGRESS = 0X05;
 
-    private AbstractFOkhttpHandler abstractFOkhttpHandler;
+    protected AbstractFOkhttpHandler abstractFOkhttpHandler;
 
     /**
      * 请求返回数据的格式
