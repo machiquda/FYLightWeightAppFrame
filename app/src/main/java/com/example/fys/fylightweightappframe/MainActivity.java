@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        mProgressBar = (ProgressBar) findViewById(R.id.id_progress);
-        mProgressBar.setMax(100);
-        setSupportActionBar(toolbar);
-        final FOkhttpClient okHttpClient = new FOkhttpClient.Builder(MainActivity.this).build();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        mProgressBar = (ProgressBar) findViewById(R.id.mProgressBar);
+//        mProgressBar.setMax(100);
+//        setSupportActionBar(toolbar);
+//        final FOkhttpClient okHttpClient = new FOkhttpClient.Builder(MainActivity.this).build();
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 //                okHttpClient.get("http://publicobject.com/helloworld.txt", new JsonFOkhttpHandler() {
 //                    @Override
 //                    public void onSuccess(int statusCode, Headers headers, Object bean) {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                }, "a");
 
-                String urla = "http://dl.zongheng.com/book/69507.zip?";
+                //String urla = "http://dl.zongheng.com/book/69507.zip?";
 
 //                FOkhttpClient
 //                        .get()
@@ -89,27 +89,27 @@ public class MainActivity extends AppCompatActivity {
 //                        });
 
 
-                FOkhttpClient.get().url(urla).build().execute(new FileFOkhttpHandler(Environment.getExternalStorageDirectory().getAbsolutePath(), "gson-2.2.1.jar") {
-
-
-                    @Override
-                    protected void syncInProgress(final float progress, long total, Object id) {
-
-                       // mProgressBar.setProgress((int) (100 * progress));
-                        mProgressBar.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mProgressBar.setProgress((int) (100 * progress));
-                            }
-                        });
-                        Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "inProgress :" + (int) (100 * progress));
-                    }
-                });
-
-
-            }
-        });
+//                FOkhttpClient.get().url(urla).build().execute(new FileFOkhttpHandler(Environment.getExternalStorageDirectory().getAbsolutePath(), "gson-2.2.1.jar") {
+//
+//
+//                    @Override
+//                    protected void syncInProgress(final float progress, long total, Object id) {
+//
+//                       // mProgressBar.setProgress((int) (100 * progress));
+//                        mProgressBar.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                mProgressBar.setProgress((int) (100 * progress));
+//                            }
+//                        });
+//                        Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
+//                        Log.e(TAG, "inProgress :" + (int) (100 * progress));
+//                    }
+//                });
+//
+//
+//            }
+//        });
 
 
 //        okHttpClient.get("http://publicobject.com/helloworld.txt", new JsonFOkhttpHandler() {
@@ -129,27 +129,27 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(MainActivity.this, "sdasda", Toast.LENGTH_LONG).show();
 //            }
 //        }, "a");
-
-        Map<String, Object> data = new HashMap<>();
-        data.put("phone", "18815285479");
-        data.put("password", "e10adc3949ba59abbe56e057f20f883e");
-        okHttpClient.get("http://pdktest.aetone.com/api/driver/login", data, new JsonFOkhttpHandler() {
-            @Override
-            public void onSuccess(int statusCode, Headers headers, Object bean) {
-                Toast.makeText(MainActivity.this, "sdasda", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onJsonStringSuccess(int statusCode, Headers headers, String responseJsonString) {
-                Toast.makeText(MainActivity.this, "sdasda", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFinish(int statusCode, Headers headers) {
-
-                Toast.makeText(MainActivity.this, "sdasda", Toast.LENGTH_LONG).show();
-            }
-        }, "a");
+//
+//        Map<String, Object> data = new HashMap<>();
+//        data.put("phone", "18815285479");
+//        data.put("password", "e10adc3949ba59abbe56e057f20f883e");
+//        okHttpClient.get("http://pdktest.aetone.com/api/driver/login", data, new JsonFOkhttpHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Headers headers, Object bean) {
+//                Toast.makeText(MainActivity.this, "sdasda", Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onJsonStringSuccess(int statusCode, Headers headers, String responseJsonString) {
+//                Toast.makeText(MainActivity.this, "sdasda", Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onFinish(int statusCode, Headers headers) {
+//
+//                Toast.makeText(MainActivity.this, "sdasda", Toast.LENGTH_LONG).show();
+//            }
+//        }, "a");
 
     }
 
