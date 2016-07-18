@@ -347,7 +347,7 @@ public class FOkhttpClient {
 
                              @Override
                              public void onFailure(Call call, IOException e) {
-                                 if (abstractFOkhttpHandler != null) {
+                                 if (checkCallBackHandler(abstractFOkhttpHandler)) {
                                      sendFailResultCallback(call, e, abstractFOkhttpHandler, null, tag);
                                      return;
                                  }
@@ -359,25 +359,25 @@ public class FOkhttpClient {
                                  try {
                                      if (!response.isSuccessful()) {
                                          //请求失败
-                                         if (abstractFOkhttpHandler != null) {
+                                         if (checkCallBackHandler(abstractFOkhttpHandler)) {
                                              sendFailResultCallback(call, null, abstractFOkhttpHandler, response, tag);
                                              return;
                                          }
                                      } else {
                                          //返回对象
-                                         if (response.body() != null) {
+                                         if (response.body() != null && checkCallBackHandler(abstractFOkhttpHandler)) {
                                              //文件下载请求  直接 返回response 不做处理
                                              if (abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.FILE_RESPONSE || abstractFOkhttpHandler.getResponseFormatType() == ResponseFormatType.STRING) {
-                                                 if (abstractFOkhttpHandler != null) {
-                                                     Result result = new Result();
-                                                     result.setNetWorkStatusCode(response.code());
-                                                     result.setTag(tag);
-                                                     result.setData(response);
-                                                     result.setHeaders(response.headers());
-                                                     result.setDataType(Result.OTHER);
-                                                     abstractFOkhttpHandler.callOnSuccess(result);
-                                                     return;
-                                                 }
+
+                                                 Result result = new Result();
+                                                 result.setNetWorkStatusCode(response.code());
+                                                 result.setTag(tag);
+                                                 result.setData(response);
+                                                 result.setHeaders(response.headers());
+                                                 result.setDataType(Result.OTHER);
+                                                 abstractFOkhttpHandler.callOnSuccess(result);
+                                                 return;
+
 
                                              }
 
@@ -388,16 +388,16 @@ public class FOkhttpClient {
                                              } catch (Exception e) {
                                                  //不是json 字符串 检查 contentType 不是json格式的  直接返回数据
                                                  if (response.body() != null && response.body().contentType() != MediaType.parse("application/json") && response.body().contentType() != MediaType.parse("text/json")) {
-                                                     if (abstractFOkhttpHandler != null) {
-                                                         Result result = new Result();
-                                                         result.setNetWorkStatusCode(response.code());
-                                                         result.setTag(tag);
-                                                         result.setData(response.body());
-                                                         result.setHeaders(response.headers());
-                                                         result.setDataType(Result.OTHER);
-                                                         abstractFOkhttpHandler.callOnSuccess(result);
-                                                         return;
-                                                     }
+
+                                                     Result result = new Result();
+                                                     result.setNetWorkStatusCode(response.code());
+                                                     result.setTag(tag);
+                                                     result.setData(response.body());
+                                                     result.setHeaders(response.headers());
+                                                     result.setDataType(Result.OTHER);
+                                                     abstractFOkhttpHandler.callOnSuccess(result);
+                                                     return;
+
                                                  } else {
 
                                                      if (abstractFOkhttpHandler != null) {
@@ -406,60 +406,84 @@ public class FOkhttpClient {
                                                      }
                                                  }
                                              }
+                                             if (jsonObject != null) {
+                                                 /**
+                                                  * 判断返回数据是否是 { data,code,message}格式
+                                                  */
+                                                 final String data = jsonObject.getString("data");
+                                                 final String code = jsonObject.getString("code");
+                                                 if (data == null || code == null) {
+                                                     //如果classes不为NULL 尝试转换成期望module
+                                                     if (classes != null) {
+                                                         try {
+                                                             Object re = JSON.parseObject(jsonObject.toJSONString(), classes);
+                                                             Result result = new Result();
+                                                             result.setNetWorkStatusCode(response.code());
+                                                             result.setTag(tag);
+                                                             result.setData(re);
+                                                             result.setHeaders(response.headers());
+                                                             result.setDataType(Result.STAND);
+                                                             abstractFOkhttpHandler.callOnSuccess(result);
+                                                             return;
 
-                                             /**
-                                              * 判断返回数据是否是 { data,code,message}格式
-                                              */
-                                             final String data = jsonObject.getString("data");
-                                             final String code = jsonObject.getString("code");
-                                             if (data == null || code == null) {
-                                                 if (abstractFOkhttpHandler != null) {
-                                                     Result result = new Result();
-                                                     result.setNetWorkStatusCode(response.code());
-                                                     result.setTag(tag);
-                                                     result.setData(jsonObject.toJSONString());
-                                                     result.setHeaders(response.headers());
-                                                     result.setDataType(Result.OTHER);
-                                                     abstractFOkhttpHandler.callOnSuccess(result);
-                                                     return;
+                                                         } catch (Exception e) {
+                                                             sendFailResultCallback(call, e, abstractFOkhttpHandler, response, tag);
+                                                             return;
+                                                         }
 
-                                                 }
-                                             } else {
-                                                 if (classes == null) {
-                                                     if (abstractFOkhttpHandler != null) {
+                                                     } else {
+
+                                                         Result result = new Result();
+                                                         result.setNetWorkStatusCode(response.code());
+                                                         result.setTag(tag);
+                                                         result.setData(jsonObject.toJSONString());
+                                                         result.setHeaders(response.headers());
+                                                         result.setDataType(Result.OTHER);
+                                                         abstractFOkhttpHandler.callOnSuccess(result);
+
+
+                                                         return;
+                                                     }
+                                                 } else {
+                                                     if (classes == null) {
+
                                                          Result result = new Result();
                                                          result.setMessage(jsonObject.getString("message"));
                                                          result.setNetWorkStatusCode(response.code());
                                                          result.setTag(tag);
-                                                         if (data == null) {
-                                                             if (jsonObject == null) {
-                                                                 result.setData(response.body());
-                                                             } else {
-                                                                 result.setData(jsonObject);
-                                                             }
-                                                         } else {
-                                                             result.setData(data);
-                                                         }
+                                                         result.setData(data);
                                                          result.setCode(jsonObject.getIntValue("code"));
                                                          result.setHeaders(response.headers());
                                                          result.setDataType(Result.OTHER);
                                                          abstractFOkhttpHandler.callOnSuccess(result);
-                                                         return;
-                                                     }
-                                                 } else {
 
-                                                     Object re = JSON.parseObject(data, classes);
-                                                     Result result = new Result();
-                                                     result.setMessage(jsonObject.getString("message"));
-                                                     result.setNetWorkStatusCode(response.code());
-                                                     result.setCode(jsonObject.getIntValue("code"));
-                                                     result.setTag(tag);
-                                                     result.setData(re);
-                                                     result.setHeaders(response.headers());
-                                                     result.setDataType(Result.STAND);
-                                                     abstractFOkhttpHandler.callOnSuccess(result);
-                                                     return;
+                                                         return;
+                                                     } else {
+                                                         try {
+
+                                                             Object re = JSON.parseObject(data, classes);
+                                                             Result result = new Result();
+                                                             result.setMessage(jsonObject.getString("message"));
+                                                             result.setNetWorkStatusCode(response.code());
+                                                             result.setCode(jsonObject.getIntValue("code"));
+                                                             result.setTag(tag);
+                                                             result.setData(re);
+                                                             result.setHeaders(response.headers());
+                                                             result.setDataType(Result.STAND);
+                                                             abstractFOkhttpHandler.callOnSuccess(result);
+
+                                                             return;
+
+                                                         } catch (Exception e) {
+                                                             sendFailResultCallback(call, e, abstractFOkhttpHandler, response, tag);
+                                                             return;
+                                                         }
+
+
+                                                     }
                                                  }
+                                             } else {
+
                                              }
                                          }
                                      }
@@ -642,12 +666,13 @@ public class FOkhttpClient {
      *
      * @param call
      * @param e
-     * @param callbacHandlerk
+     * @param abstractFOkhttpHandler
      * @param response
      * @param tag
      */
     private void sendFailResultCallback(final Call call, final Exception e,
-                                        final AbstractFOkhttpHandler callbacHandlerk, Response response, Object tag) {
+
+                                        final AbstractFOkhttpHandler abstractFOkhttpHandler, Response response, Object tag) {
         Result result = new Result();
         result.setErrorCode(Result.FAILURE_RESPONSE);
         if (response != null) {
@@ -659,8 +684,22 @@ public class FOkhttpClient {
             result.setThrowable(e);
         }
         result.setTag(tag);
-        callbacHandlerk.callOnFailure(result);
+        abstractFOkhttpHandler.callOnFailure(result);
     }
 
+    /**
+     * 检查 请求回调
+     *
+     * @param abstractFOkhttpHandler
+     * @return
+     */
+    private boolean checkCallBackHandler(AbstractFOkhttpHandler abstractFOkhttpHandler) {
+        if (abstractFOkhttpHandler == null) {
+            Log.w(TAG, "checkCallBackHandler: handler is null");
+            return false;
+
+        }
+        return true;
+    }
 
 }
