@@ -11,6 +11,8 @@ import com.example.fys.fylightweightappframe.R;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 
+import fengyu.cn.library.net.okhttp.FOkhttpClient;
+
 /**
  * Created by fengyu on 16/7/13.
  */
@@ -25,6 +27,7 @@ public class MvpExActivity extends AppCompatActivity {
 
     @AfterViews
     void afterViews(){
+        FOkhttpClient.with(MvpExActivity.this).debug(true).build();
         mvpExFragment = new MvpExFragment_();
         presenter = new ExamplePresenter(mvpExFragment);
         FragmentManager fragmentManager = getFragmentManager();

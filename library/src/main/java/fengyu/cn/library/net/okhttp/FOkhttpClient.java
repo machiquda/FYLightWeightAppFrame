@@ -37,7 +37,7 @@ import okio.Okio;
  * Factory for calls, which can be used to send HTTP requests and read their responses.
  * Most applications can use a single OkHttpClient for all of their HTTP requests,
  * benefiting from a shared response cache, thread pool, connection re-use, etc
- * <p>
+ * <p/>
  * <br/>Created by fys on 2016/6/11.
  */
 public class FOkhttpClient {
@@ -483,7 +483,19 @@ public class FOkhttpClient {
                                                      }
                                                  }
                                              } else {
-
+                                                 //无法装换成 json 也没有报错
+                                                 Result result = new Result();
+                                                 result.setNetWorkStatusCode(response.code());
+                                                 result.setTag(tag);
+                                                 result.setData(response);
+                                                 result.setHeaders(response.headers());
+                                                 result.setDataType(Result.OTHER);
+                                                 abstractFOkhttpHandler.callOnSuccess(result);
+                                                 return;
+                                             }
+                                         } else {
+                                             if (checkCallBackHandler(abstractFOkhttpHandler)) {
+                                                 sendFailResultCallback(call, new Exception("response is null"), abstractFOkhttpHandler, response, tag);
                                              }
                                          }
                                      }
@@ -557,6 +569,10 @@ public class FOkhttpClient {
         }
     }
 
+
+    public static Builder with(Context context) {
+        return new Builder(context);
+    }
 
     public static class Builder {
         private int defaultCacheSize = 10 * 1024 * 1024;
@@ -695,7 +711,7 @@ public class FOkhttpClient {
      */
     private boolean checkCallBackHandler(AbstractFOkhttpHandler abstractFOkhttpHandler) {
         if (abstractFOkhttpHandler == null) {
-            Log.w(TAG, "checkCallBackHandler: handler is null");
+            Log.w(TAG, "checkCallBackHandler: response has received but handler is null");
             return false;
 
         }

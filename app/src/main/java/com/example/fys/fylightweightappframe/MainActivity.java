@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 //        mProgressBar = (ProgressBar) findViewById(R.id.mProgressBar);
 //        mProgressBar.setMax(100);
 //        setSupportActionBar(toolbar);
-//        final FOkhttpClient okHttpClient = new FOkhttpClient.Builder(MainActivity.this).build();
+        // new FOkhttpClient.Builder(MainActivity.this).initBuild();
+        FOkhttpClient.with(MainActivity.this).debug(true).build();
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                }, "a");
 
-                //String urla = "http://dl.zongheng.com/book/69507.zip?";
+        //String urla = "http://dl.zongheng.com/book/69507.zip?";
 
 //                FOkhttpClient
 //                        .get()
